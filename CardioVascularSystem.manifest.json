@@ -1,0 +1,11 @@
+{
+    "id": "CardioVascularSystem",
+    "kind": "functional",
+    "sources": [
+        {
+            "id": "CardioVascularSystem",
+            "href": "CardioVascularSystem.svg",
+            "kind": "base"
+        }
+    ]
+}
