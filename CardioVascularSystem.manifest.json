@@ -1,5 +1,6 @@
 {
     "id": "CardioVascularSystem",
+    "models": "BG:CardioVascular",
     "kind": "functional",
     "sources": [
         {
