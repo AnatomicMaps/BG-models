@@ -1,0 +1,79 @@
+{
+    "input": [
+      {
+        "defaultValue": 3,
+        "id": "E_B_LVmax",
+        "maximumValue": 5,
+        "minimumValue": 1,
+        "name": "Left ventricular contractility"
+      },
+      {
+        "defaultValue": 10,
+        "id": "E_B_pulmVein",
+        "maximumValue": 30,
+        "minimumValue": 1,
+        "name": "Pulmonary venous wall stiffness"
+      },
+      {
+        "defaultValue": 20,
+        "id": "E_B_AA",
+        "maximumValue": 50,
+        "minimumValue": 1,
+        "name": "Aortic wall stiffness"
+      }
+    ],
+    "output": {
+      "data": [
+        {
+          "id": "t",
+          "name": "main/t"
+        },
+        {
+          "id": "u_B_LV",
+          "name": "main/u_B_LV"
+        },
+        {
+          "id": "u_B_RV",
+          "name": "main/u_B_RV"
+        },
+        {
+          "id": "v_B_AV",
+          "name": "main/v_B_AV"
+        }
+      ],
+      "plots": [
+        {
+          "xAxisTitle": "t",
+          "xValue": "t",
+          "yAxisTitle": "Left ventricular pressure",
+          "yValue": "u_B_LV"
+        },
+        {
+          "xAxisTitle": "t",
+          "xValue": "t",
+          "yAxisTitle": "Right ventricular pressure",
+          "yValue": "u_B_RV"
+        },
+        {
+          "xAxisTitle": "t",
+          "xValue": "t",
+          "yAxisTitle": "Aortic valve flow",
+          "yValue": "v_B_AV"
+        }
+      ]
+    },
+    "parameters": [
+      {
+        "name": "main/E_B_LVmax",
+        "value": "E_B_LVmax"
+      },
+      {
+        "name": "main/E_B_pulmVein",
+        "value": "E_B_pulmVein"
+      },
+      {
+        "name": "main/E_B_AA",
+        "value": "E_B_AA"
+      }
+    ]
+  }
