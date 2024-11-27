@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<omexManifest xmlns="http://identifiers.org/combine.specifications/omex-manifest">
+    <content location="." format="http://identifiers.org/combine.specifications/omex"/>
+    <content location="./models/cvs-model.sedml" format="http://identifiers.org/combine.specifications/sed-ml" master="true"/>
+    <content location="./models/cvs-model.cellml" format="http://identifiers.org/combine.specifications/cellml"/>
+    <content location="simulation.json" format="http://purl.org/NET/mediatypes/application/json"/>
+</omexManifest>
