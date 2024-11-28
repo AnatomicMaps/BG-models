@@ -7,6 +7,13 @@
             "id": "CardioVascularSystem",
             "href": "CardioVascularSystem.svg",
             "kind": "base"
+        },
+        {
+            "id": "respiration",
+            "href": "Respiration.svg",
+            "kind": "detail",
+            "feature": "CardioVascularSystem/$u_{lung}^{b}$",
+            "zoom": 8
         }
     ]
 }
