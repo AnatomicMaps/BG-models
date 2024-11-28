@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <sedML level="1" version="3" xmlns="http://sed-ml.org/sed-ml/level1/version3" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <listOfModels>
-        <model id="model" language="urn:sedml:language:cellml.1_1" source="BG cvs model v1.cellml"/>
+        <model id="model" language="urn:sedml:language:cellml.1_1" source="cvs-model.cellml"/>
     </listOfModels>
     <listOfSimulations>
         <uniformTimeCourse id="simulation1" initialTime="0" numberOfPoints="3000" outputEndTime="30" outputStartTime="0">
