@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <sedML level="1" version="3" xmlns="http://sed-ml.org/sed-ml/level1/version3" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
     <listOfModels>
-        <model id="model" language="urn:sedml:language:cellml.1_1" source="cvs-model.cellml"/>
+        <model id="model" language="urn:sedml:language:cellml.1_1" source="BG cvs model v1.cellml"/>
     </listOfModels>
     <listOfSimulations>
-        <uniformTimeCourse id="simulation1" initialTime="0" numberOfPoints="10000" outputEndTime="100" outputStartTime="0">
+        <uniformTimeCourse id="simulation1" initialTime="0" numberOfPoints="3000" outputEndTime="30" outputStartTime="0">
             <algorithm kisaoID="KISAO:0000019">
                 <listOfAlgorithmParameters>
                     <algorithmParameter kisaoID="KISAO:0000211" value="1e-07"/>
@@ -49,7 +49,7 @@
                 <ci> yVariable1_1 </ci>
             </math>
             <listOfVariables>
-                <variable id="yVariable1_1" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='v_B_TV']" taskReference="repeatedTask"/>
+                <variable id="yVariable1_1" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='u_B_LV']" taskReference="repeatedTask"/>
             </listOfVariables>
         </dataGenerator>
         <dataGenerator id="xDataGenerator1_2">
@@ -65,7 +65,7 @@
                 <ci> yVariable1_2 </ci>
             </math>
             <listOfVariables>
-                <variable id="yVariable1_2" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='v_B_PV']" taskReference="repeatedTask"/>
+                <variable id="yVariable1_2" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='u_B_RV']" taskReference="repeatedTask"/>
             </listOfVariables>
         </dataGenerator>
         <dataGenerator id="xDataGenerator1_3">
@@ -81,7 +81,7 @@
                 <ci> yVariable1_3 </ci>
             </math>
             <listOfVariables>
-                <variable id="yVariable1_3" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='v_B_MV']" taskReference="repeatedTask"/>
+                <variable id="yVariable1_3" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='u_B_LA']" taskReference="repeatedTask"/>
             </listOfVariables>
         </dataGenerator>
         <dataGenerator id="xDataGenerator1_4">
@@ -97,7 +97,7 @@
                 <ci> yVariable1_4 </ci>
             </math>
             <listOfVariables>
-                <variable id="yVariable1_4" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='v_B_AV']" taskReference="repeatedTask"/>
+                <variable id="yVariable1_4" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='u_B_RA']" taskReference="repeatedTask"/>
             </listOfVariables>
         </dataGenerator>
         <dataGenerator id="xDataGenerator2_1">
@@ -113,7 +113,7 @@
                 <ci> yVariable2_1 </ci>
             </math>
             <listOfVariables>
-                <variable id="yVariable2_1" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='u_B_RA']" taskReference="repeatedTask"/>
+                <variable id="yVariable2_1" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='v_B_TV']" taskReference="repeatedTask"/>
             </listOfVariables>
         </dataGenerator>
         <dataGenerator id="xDataGenerator2_2">
@@ -129,7 +129,7 @@
                 <ci> yVariable2_2 </ci>
             </math>
             <listOfVariables>
-                <variable id="yVariable2_2" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='u_B_RV']" taskReference="repeatedTask"/>
+                <variable id="yVariable2_2" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='v_B_PV']" taskReference="repeatedTask"/>
             </listOfVariables>
         </dataGenerator>
         <dataGenerator id="xDataGenerator2_3">
@@ -145,7 +145,7 @@
                 <ci> yVariable2_3 </ci>
             </math>
             <listOfVariables>
-                <variable id="yVariable2_3" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='u_B_LA']" taskReference="repeatedTask"/>
+                <variable id="yVariable2_3" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='v_B_MV']" taskReference="repeatedTask"/>
             </listOfVariables>
         </dataGenerator>
         <dataGenerator id="xDataGenerator2_4">
@@ -161,23 +161,7 @@
                 <ci> yVariable2_4 </ci>
             </math>
             <listOfVariables>
-                <variable id="yVariable2_4" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='u_B_LV']" taskReference="repeatedTask"/>
-            </listOfVariables>
-        </dataGenerator>
-        <dataGenerator id="xDataGenerator2_5">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <ci> xVariable2_5 </ci>
-            </math>
-            <listOfVariables>
-                <variable id="xVariable2_5" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='t']" taskReference="repeatedTask"/>
-            </listOfVariables>
-        </dataGenerator>
-        <dataGenerator id="yDataGenerator2_5">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <ci> yVariable2_5 </ci>
-            </math>
-            <listOfVariables>
-                <variable id="yVariable2_5" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='u_B_AA']" taskReference="repeatedTask"/>
+                <variable id="yVariable2_4" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='v_B_AV']" taskReference="repeatedTask"/>
             </listOfVariables>
         </dataGenerator>
         <dataGenerator id="xDataGenerator3_1">
@@ -193,7 +177,7 @@
                 <ci> yVariable3_1 </ci>
             </math>
             <listOfVariables>
-                <variable id="yVariable3_1" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='q_B_heartTot']" taskReference="repeatedTask"/>
+                <variable id="yVariable3_1" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='q_Blood']" taskReference="repeatedTask"/>
             </listOfVariables>
         </dataGenerator>
         <dataGenerator id="xDataGenerator3_2">
@@ -209,26 +193,10 @@
                 <ci> yVariable3_2 </ci>
             </math>
             <listOfVariables>
-                <variable id="yVariable3_2" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='q_B_lungTot']" taskReference="repeatedTask"/>
+                <variable id="yVariable3_2" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='q_B_limbTot']" taskReference="repeatedTask"/>
             </listOfVariables>
         </dataGenerator>
         <dataGenerator id="xDataGenerator3_3">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <ci> xVariable3_3 </ci>
-            </math>
-            <listOfVariables>
-                <variable id="xVariable3_3" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='t']" taskReference="repeatedTask"/>
-            </listOfVariables>
-        </dataGenerator>
-        <dataGenerator id="yDataGenerator3_3">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <ci> yVariable3_3 </ci>
-            </math>
-            <listOfVariables>
-                <variable id="yVariable3_3" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='q_B_renalTot']" taskReference="repeatedTask"/>
-            </listOfVariables>
-        </dataGenerator>
-        <dataGenerator id="xDataGenerator3_4">
             <math xmlns="http://www.w3.org/1998/Math/MathML">
                 <ci> xVariable3_4 </ci>
             </math>
@@ -236,44 +204,12 @@
                 <variable id="xVariable3_4" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='t']" taskReference="repeatedTask"/>
             </listOfVariables>
         </dataGenerator>
-        <dataGenerator id="yDataGenerator3_4">
+        <dataGenerator id="yDataGenerator3_3">
             <math xmlns="http://www.w3.org/1998/Math/MathML">
                 <ci> yVariable3_4 </ci>
             </math>
             <listOfVariables>
-                <variable id="yVariable3_4" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='q_B_gutTot']" taskReference="repeatedTask"/>
-            </listOfVariables>
-        </dataGenerator>
-        <dataGenerator id="xDataGenerator3_5">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <ci> xVariable3_5 </ci>
-            </math>
-            <listOfVariables>
-                <variable id="xVariable3_5" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='t']" taskReference="repeatedTask"/>
-            </listOfVariables>
-        </dataGenerator>
-        <dataGenerator id="yDataGenerator3_5">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <ci> yVariable3_5 </ci>
-            </math>
-            <listOfVariables>
-                <variable id="yVariable3_5" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='q_B_brainTot']" taskReference="repeatedTask"/>
-            </listOfVariables>
-        </dataGenerator>
-        <dataGenerator id="xDataGenerator3_6">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <ci> xVariable3_6 </ci>
-            </math>
-            <listOfVariables>
-                <variable id="xVariable3_6" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='t']" taskReference="repeatedTask"/>
-            </listOfVariables>
-        </dataGenerator>
-        <dataGenerator id="yDataGenerator3_6">
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-                <ci> yVariable3_6 </ci>
-            </math>
-            <listOfVariables>
-                <variable id="yVariable3_6" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='q_B_limbTot']" taskReference="repeatedTask"/>
+                <variable id="yVariable3_4" target="/cellml:model/cellml:component[@name='main']/cellml:variable[@name='q_B_brainTot']" taskReference="repeatedTask"/>
             </listOfVariables>
         </dataGenerator>
     </listOfDataGenerators>
@@ -332,7 +268,7 @@
                     <annotation>
                         <properties xmlns="http://www.opencor.ws/">
                             <selected>true</selected>
-                            <title>v_B_TV</title>
+                            <title>u_B_LV</title>
                             <line>
                                 <style>solid</style>
                                 <width>2</width>
@@ -352,7 +288,7 @@
                     <annotation>
                         <properties xmlns="http://www.opencor.ws/">
                             <selected>true</selected>
-                            <title>v_B_PV</title>
+                            <title>u_B_RV</title>
                             <line>
                                 <style>solid</style>
                                 <width>2</width>
@@ -372,7 +308,7 @@
                     <annotation>
                         <properties xmlns="http://www.opencor.ws/">
                             <selected>true</selected>
-                            <title>v_B_MV</title>
+                            <title>u_B_LA</title>
                             <line>
                                 <style>solid</style>
                                 <width>2</width>
@@ -392,7 +328,7 @@
                     <annotation>
                         <properties xmlns="http://www.opencor.ws/">
                             <selected>true</selected>
-                            <title>v_B_AV</title>
+                            <title>u_B_RA</title>
                             <line>
                                 <style>solid</style>
                                 <width>2</width>
@@ -464,7 +400,7 @@
                     <annotation>
                         <properties xmlns="http://www.opencor.ws/">
                             <selected>true</selected>
-                            <title>u_B_RA</title>
+                            <title>v_B_TV</title>
                             <line>
                                 <style>solid</style>
                                 <width>2</width>
@@ -484,7 +420,7 @@
                     <annotation>
                         <properties xmlns="http://www.opencor.ws/">
                             <selected>true</selected>
-                            <title>u_B_RV</title>
+                            <title>v_B_PV</title>
                             <line>
                                 <style>solid</style>
                                 <width>2</width>
@@ -504,7 +440,7 @@
                     <annotation>
                         <properties xmlns="http://www.opencor.ws/">
                             <selected>true</selected>
-                            <title>u_B_LA</title>
+                            <title>v_B_MV</title>
                             <line>
                                 <style>solid</style>
                                 <width>2</width>
@@ -524,7 +460,7 @@
                     <annotation>
                         <properties xmlns="http://www.opencor.ws/">
                             <selected>true</selected>
-                            <title>u_B_LV</title>
+                            <title>v_B_AV</title>
                             <line>
                                 <style>solid</style>
                                 <width>2</width>
@@ -534,26 +470,6 @@
                                 <style>none</style>
                                 <size>8</size>
                                 <color>#7e2f8e</color>
-                                <filled>true</filled>
-                                <fillColor>#ffffff</fillColor>
-                            </symbol>
-                        </properties>
-                    </annotation>
-                </curve>
-                <curve id="curve2_5" logX="false" logY="false" xDataReference="xDataGenerator2_5" yDataReference="yDataGenerator2_5">
-                    <annotation>
-                        <properties xmlns="http://www.opencor.ws/">
-                            <selected>true</selected>
-                            <title>u_B_AA</title>
-                            <line>
-                                <style>solid</style>
-                                <width>2</width>
-                                <color>#77ac30</color>
-                            </line>
-                            <symbol>
-                                <style>none</style>
-                                <size>8</size>
-                                <color>#77ac30</color>
                                 <filled>true</filled>
                                 <fillColor>#ffffff</fillColor>
                             </symbol>
@@ -616,16 +532,16 @@
                     <annotation>
                         <properties xmlns="http://www.opencor.ws/">
                             <selected>true</selected>
-                            <title>q_B_heartTot</title>
+                            <title>q_Blood</title>
                             <line>
                                 <style>solid</style>
                                 <width>2</width>
-                                <color>#0072bd</color>
+                                <color>#d95319</color>
                             </line>
                             <symbol>
                                 <style>none</style>
                                 <size>8</size>
-                                <color>#0072bd</color>
+                                <color>#d95319</color>
                                 <filled>true</filled>
                                 <fillColor>#ffffff</fillColor>
                             </symbol>
@@ -636,27 +552,7 @@
                     <annotation>
                         <properties xmlns="http://www.opencor.ws/">
                             <selected>true</selected>
-                            <title>q_B_lungTot</title>
-                            <line>
-                                <style>solid</style>
-                                <width>2</width>
-                                <color>#d95319</color>
-                            </line>
-                            <symbol>
-                                <style>none</style>
-                                <size>8</size>
-                                <color>#d95319</color>
-                                <filled>true</filled>
-                                <fillColor>#ffffff</fillColor>
-                            </symbol>
-                        </properties>
-                    </annotation>
-                </curve>
-                <curve id="curve3_3" logX="false" logY="false" xDataReference="xDataGenerator3_3" yDataReference="yDataGenerator3_3">
-                    <annotation>
-                        <properties xmlns="http://www.opencor.ws/">
-                            <selected>true</selected>
-                            <title>q_B_renalTot</title>
+                            <title>q_B_limbTot</title>
                             <line>
                                 <style>solid</style>
                                 <width>2</width>
@@ -672,27 +568,7 @@
                         </properties>
                     </annotation>
                 </curve>
-                <curve id="curve3_4" logX="false" logY="false" xDataReference="xDataGenerator3_4" yDataReference="yDataGenerator3_4">
-                    <annotation>
-                        <properties xmlns="http://www.opencor.ws/">
-                            <selected>true</selected>
-                            <title>q_B_gutTot</title>
-                            <line>
-                                <style>solid</style>
-                                <width>2</width>
-                                <color>#7e2f8e</color>
-                            </line>
-                            <symbol>
-                                <style>none</style>
-                                <size>8</size>
-                                <color>#7e2f8e</color>
-                                <filled>true</filled>
-                                <fillColor>#ffffff</fillColor>
-                            </symbol>
-                        </properties>
-                    </annotation>
-                </curve>
-                <curve id="curve3_5" logX="false" logY="false" xDataReference="xDataGenerator3_5" yDataReference="yDataGenerator3_5">
+                <curve id="curve3_4" logX="false" logY="false" xDataReference="xDataGenerator3_3" yDataReference="yDataGenerator3_3">
                     <annotation>
                         <properties xmlns="http://www.opencor.ws/">
                             <selected>true</selected>
@@ -706,26 +582,6 @@
                                 <style>none</style>
                                 <size>8</size>
                                 <color>#77ac30</color>
-                                <filled>true</filled>
-                                <fillColor>#ffffff</fillColor>
-                            </symbol>
-                        </properties>
-                    </annotation>
-                </curve>
-                <curve id="curve3_6" logX="false" logY="false" xDataReference="xDataGenerator3_6" yDataReference="yDataGenerator3_6">
-                    <annotation>
-                        <properties xmlns="http://www.opencor.ws/">
-                            <selected>true</selected>
-                            <title>q_B_limbTot</title>
-                            <line>
-                                <style>solid</style>
-                                <width>2</width>
-                                <color>#4dbeee</color>
-                            </line>
-                            <symbol>
-                                <style>none</style>
-                                <size>8</size>
-                                <color>#4dbeee</color>
                                 <filled>true</filled>
                                 <fillColor>#ffffff</fillColor>
                             </symbol>
