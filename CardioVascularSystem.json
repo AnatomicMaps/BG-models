@@ -322,5 +322,185 @@
     {
         "id": "CardioVascularSystem/SHAPE_421",
         "label": "$v_{rRenal2}^{b}$"
+    },
+    {
+        "id": "respiration/SHAPE_1",
+        "label": "$^{Diaphragm}$"
+    },
+    {
+        "id": "respiration/SHAPE_2",
+        "label": "$^{Abdomen}$"
+    },
+    {
+        "id": "respiration/SHAPE_3",
+        "label": "$^{Thorax}$"
+    },
+    {
+        "id": "respiration/SHAPE_4",
+        "label": "$^{Throat}$"
+    },
+    {
+        "id": "respiration/SHAPE_9",
+        "label": "$_{a}^{Alveoli}$"
+    },
+    {
+        "id": "respiration/SHAPE_10",
+        "label": "$^{O2freeHbO2}$"
+    },
+    {
+        "id": "respiration/SHAPE_11",
+        "label": "$$"
+    },
+    {
+        "id": "respiration/SHAPE_13",
+        "label": "$u_{A}^{a}$"
+    },
+    {
+        "id": "respiration/SHAPE_18",
+        "label": "$Re_{AB}^{O}$"
+    },
+    {
+        "id": "respiration/SHAPE_23",
+        "label": "$u_{Mouth}^{a}$"
+    },
+    {
+        "id": "respiration/SHAPE_29",
+        "label": "$u_{lCap}^{O}$"
+    },
+    {
+        "id": "respiration/SHAPE_34",
+        "label": "$u_{A}^{O}$"
+    },
+    {
+        "id": "respiration/SHAPE_39",
+        "label": "$u_{A}^{CO}$"
+    },
+    {
+        "id": "respiration/SHAPE_44",
+        "label": "$v_{AB}^{O}$"
+    },
+    {
+        "id": "respiration/SHAPE_49",
+        "label": "$v_{AB}^{O}$"
+    },
+    {
+        "id": "respiration/SHAPE_55",
+        "label": "$Re_{AB}^{CO}$"
+    },
+    {
+        "id": "respiration/SHAPE_60",
+        "label": "$v_{AB}^{CO}$"
+    },
+    {
+        "id": "respiration/SHAPE_66",
+        "label": "$v_{AB}^{CO}$"
+    },
+    {
+        "id": "respiration/SHAPE_72",
+        "label": "$u_{B}^{CO}$"
+    },
+    {
+        "id": "respiration/SHAPE_77",
+        "label": "$u_{B}^{HO}$"
+    },
+    {
+        "id": "respiration/SHAPE_83",
+        "label": "$u_{B}^{-}$"
+    },
+    {
+        "id": "respiration/SHAPE_89",
+        "label": "$u_{B}^{+}$"
+    },
+    {
+        "id": "respiration/SHAPE_94",
+        "label": "$v_{B}^{CA}$"
+    },
+    {
+        "id": "respiration/SHAPE_98",
+        "label": "$v_{B}^{CA}$"
+    },
+    {
+        "id": "respiration/SHAPE_103",
+        "label": "$Re_{B}^{CA}$"
+    },
+    {
+        "id": "respiration/SHAPE_112",
+        "label": "$f_{A}^{O\\ }$"
+    },
+    {
+        "id": "respiration/SHAPE_118",
+        "label": "$f_{A}^{CO\\ }$"
+    },
+    {
+        "id": "respiration/SHAPE_124",
+        "label": "$q_{lCap}^{Ofree}$"
+    },
+    {
+        "id": "respiration/SHAPE_130",
+        "label": "$q_{B}^{CO}$"
+    },
+    {
+        "id": "respiration/SHAPE_140",
+        "label": "$q_{A}^{a}$"
+    },
+    {
+        "id": "respiration/SHAPE_168",
+        "label": "$R_{Thorax}^{a}$"
+    },
+    {
+        "id": "respiration/SHAPE_173",
+        "label": "$q_{B}^{-}$"
+    },
+    {
+        "id": "respiration/SHAPE_181",
+        "label": "$q_{B}^{+}$"
+    },
+    {
+        "id": "respiration/SHAPE_186",
+        "label": "$q_{B}^{HO}$"
+    },
+    {
+        "id": "respiration/SHAPE_197",
+        "label": "$q_{lCap}^{HbO}$"
+    },
+    {
+        "id": "respiration/SHAPE_213",
+        "label": "$v_{lCap}^{Otot}$"
+    },
+    {
+        "id": "respiration/SHAPE_226",
+        "label": "$v_{lIn}^{O}$"
+    },
+    {
+        "id": "respiration/SHAPE_231",
+        "label": "$v_{lOut}^{O}$"
+    },
+    {
+        "id": "respiration/SHAPE_236",
+        "label": "$v_{Diaphragm}^{a}$"
+    },
+    {
+        "id": "respiration/SHAPE_240",
+        "label": "$u_{Abdomen}^{a}$"
+    },
+    {
+        "id": "respiration/SHAPE_244",
+        "label": "$u_{Thorax}^{a}$"
+    },
+    {
+        "id": "respiration/SHAPE_251",
+        "label": "$v_{Thorax}^{a}$"
+    },
+    {
+        "id": "respiration/SHAPE_255",
+        "label": "$q_{Thorax}^{a}$"
+    },
+    {
+        "id": "respiration/SHAPE_259",
+        "label": "$q_{Abdomen}^{a}$"
+    },
+    {
+        "id": "respiration/SHAPE_264",
+        "label": "$R_{Diaphragm}^{a}$"
     }
 ]
