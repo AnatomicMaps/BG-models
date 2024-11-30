@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<model name="my_model" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+<model name="my_model" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#" xmlns:cmeta="http://www.cellml.org/metadata/1.0#">
     <!-- BG CVS model extended to include liver, stomach, spleen, pancreas, intestines, colon, brain, limbs and muscle in torso-->
     <units name="dim">
         <unit units="dimensionless"/>
@@ -149,9 +149,9 @@
         <variable name="E_B_LV" units="kPa_per_L"/>
         <variable initial_value="320" name="E_B_LVmax" units="kPa_per_L"/>
         <variable initial_value="6.667" name="E_B_LVmin" units="kPa_per_L"/>
-        <variable initial_value="1" name="q_B_LV" units="litre"/>
+        <variable cmeta:id="lv.blood.volume" initial_value="1" name="q_B_LV" units="litre"/>
         <variable initial_value="0.005" name="q_B_LV_us" units="litre"/>
-        <variable name="u_B_LV" units="kPa"/>
+        <variable cmeta:id="lv.blood.pressure" name="u_B_LV" units="kPa"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -289,9 +289,9 @@
         <variable name="E_B_RV" units="kPa_per_L"/>
         <variable initial_value="70" name="E_B_RVmax" units="kPa_per_L"/>
         <variable initial_value="2" name="E_B_RVmin" units="kPa_per_L"/>
-        <variable initial_value="0.2" name="q_B_RV" units="litre"/>
+        <variable cmeta:id="rv.blood.volume" initial_value="0.2" name="q_B_RV" units="litre"/>
         <variable initial_value="0.01" name="q_B_RV_us" units="litre"/>
-        <variable name="u_B_RV" units="kPa"/>
+        <variable cmeta:id="rv.blood.pressure" name="u_B_RV" units="kPa"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -427,9 +427,9 @@
         </math>
         <!-- Left atrium-->
         <variable initial_value="10" name="E_B_LA" units="kPa_per_L"/>
-        <variable initial_value="0.02" name="q_B_LA" units="litre"/>
+        <variable cmeta:id="la.blood.volume" initial_value="0.02" name="q_B_LA" units="litre"/>
         <variable initial_value="0.004" name="q_B_LA_us" units="litre"/>
-        <variable name="u_B_LA" units="kPa"/>
+        <variable cmeta:id="la.blood.pressure" name="u_B_LA" units="kPa"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -462,9 +462,9 @@
         </math>
         <!-- Right atrium-->
         <variable initial_value="10" name="E_B_RA" units="kPa_per_L"/>
-        <variable initial_value="0.02" name="q_B_RA" units="litre"/>
+        <variable cmeta:id="ra.blood.volume" initial_value="0.02" name="q_B_RA" units="litre"/>
         <variable initial_value="0.004" name="q_B_RA_us" units="litre"/>
-        <variable name="u_B_RA" units="kPa"/>
+        <variable cmeta:id="ra.blood.pressure" name="u_B_RA" units="kPa"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -508,7 +508,7 @@
         </math>
         <!-- Aortic valve-->
         <variable initial_value="1" name="R_B_AV" units="kPa_s_per_L"/>
-        <variable name="v_B_AV" units="L_per_s"/>
+        <variable cmeta:id="av.blood.flow" name="v_B_AV" units="L_per_s"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -538,7 +538,7 @@
         </math>
         <!-- Pulmonary Valve-->
         <variable initial_value="1" name="R_B_PV" units="kPa_s_per_L"/>
-        <variable name="v_B_PV" units="L_per_s"/>
+        <variable cmeta:id="pv.blood.flow" name="v_B_PV" units="L_per_s"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -568,7 +568,7 @@
         </math>
         <!-- Tricuspid Valve-->
         <variable initial_value="1" name="R_B_TV" units="kPa_s_per_L"/>
-        <variable name="v_B_TV" units="L_per_s"/>
+        <variable cmeta:id="tv.blood.flow" name="v_B_TV" units="L_per_s"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -598,7 +598,7 @@
         </math>
         <!-- Mitral Valve-->
         <variable initial_value="1" name="R_B_MV" units="kPa_s_per_L"/>
-        <variable name="v_B_MV" units="L_per_s"/>
+        <variable cmeta:id="mv.blood.flow" name="v_B_MV" units="L_per_s"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -627,9 +627,9 @@
             </apply>
         </math>
         <!-- Pulmonary artery-->
-        <variable initial_value="0.3" name="q_B_PA" units="litre"/>
+        <variable cmeta:id="pa.blood.volume" initial_value="0.3" name="q_B_PA" units="litre"/>
         <variable initial_value="0.2" name="q_B_PA_us" units="litre"/>
-        <variable name="u_B_PA" units="kPa"/>
+        <variable cmeta:id="pa.blood.pressure" name="u_B_PA" units="kPa"/>
         <variable initial_value="200" name="E_B_PA" units="kPa_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -662,9 +662,9 @@
             </apply>
         </math>
         <!-- Lungs  -->
-        <variable initial_value="0.2" name="q_B_lung" units="litre"/>
+        <variable cmeta:id="lung.blood.volume" initial_value="0.2" name="q_B_lung" units="litre"/>
         <variable initial_value="0.1" name="q_B_lung_us" units="litre"/>
-        <variable name="u_B_lung" units="kPa"/>
+        <variable cmeta:id="lung.blood.pressure" name="u_B_lung" units="kPa"/>
         <variable initial_value="100" name="E_B_lung" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_lung" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -710,8 +710,8 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_lung1" units="L_per_s"/>
-        <variable name="v_B_lung2" units="L_per_s"/>
+        <variable cmeta:id="lung1.blood.flow" name="v_B_lung1" units="L_per_s"/>
+        <variable cmeta:id="lung2.blood.flow" name="v_B_lung2" units="L_per_s"/>
         <variable initial_value="3" name="R_B_lung1" units="kPa_s_per_L"/>
         <variable initial_value="10" name="R_B_lung2" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -744,9 +744,9 @@
         </math>
         <!-- Pulmonary vein-->
         <variable initial_value="20" name="E_B_pulmVein" units="kPa_per_L"/>
-        <variable initial_value="0.02" name="q_B_pulmVein" units="litre"/>
+        <variable cmeta:id="pulm-vein.blood.volume" initial_value="0.02" name="q_B_pulmVein" units="litre"/>
         <variable initial_value="0.012" name="q_B_pulmVein_us" units="litre"/>
-        <variable name="u_B_pulmVein" units="kPa"/>
+        <variable cmeta:id="pulm-vein.blood.pressure" name="u_B_pulmVein" units="kPa"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -777,7 +777,7 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_pulmVein" units="L_per_s"/>
+        <variable cmeta:id="pulm-vein.blood.flow" name="v_B_pulmVein" units="L_per_s"/>
         <variable initial_value="1" name="R_B_pulmVein" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -795,12 +795,12 @@
             </apply>
         </math>
         <!-- Brain-->
-        <variable initial_value="0.1" name="q_B_brain" units="litre"/>
+        <variable cmeta:id="brain.blood.volume" initial_value="0.1" name="q_B_brain" units="litre"/>
         <variable initial_value="0.06" name="q_B_brain_us" units="litre"/>
-        <variable initial_value="0.1" name="q_B_brainVein" units="litre"/>
+        <variable cmeta:id="brain-vein.blood.volume" initial_value="0.1" name="q_B_brainVein" units="litre"/>
         <variable initial_value="0.06" name="q_B_brainVein_us" units="litre"/>
-        <variable name="u_B_brain" units="kPa"/>
-        <variable name="u_B_brainVein" units="kPa"/>
+        <variable cmeta:id="brain.blood.pressure" name="u_B_brain" units="kPa"/>
+        <variable cmeta:id="brain-vein.blood.pressure" name="u_B_brainVein" units="kPa"/>
         <variable initial_value="20" name="E_B_brain" units="kPa_per_L"/>
         <variable initial_value="20" name="E_B_brainVein" units="kPa_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -861,9 +861,9 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_brain1" units="L_per_s"/>
-        <variable name="v_B_brain2" units="L_per_s"/>
-        <variable name="v_B_brain3" units="L_per_s"/>
+        <variable cmeta:id="brain1.blood.flow" name="v_B_brain1" units="L_per_s"/>
+        <variable cmeta:id="brain2.blood.flow" name="v_B_brain2" units="L_per_s"/>
+        <variable cmeta:id="brain3.blood.flow" name="v_B_brain3" units="L_per_s"/>
         <variable initial_value="100" name="R_B_brain1" units="kPa_s_per_L"/>
         <variable initial_value="600" name="R_B_brain2" units="kPa_s_per_L"/>
         <variable initial_value="1" name="R_B_brain3" units="kPa_s_per_L"/>
@@ -909,9 +909,9 @@
             </apply>
         </math>
         <!-- Ascending aorta-->
-        <variable initial_value="0.2" name="q_B_AA" units="litre"/>
+        <variable cmeta:id="aa.blood.volume" initial_value="0.2" name="q_B_AA" units="litre"/>
         <variable initial_value="0.12" name="q_B_AA_us" units="litre"/>
-        <variable name="u_B_AA" units="kPa"/>
+        <variable cmeta:id="aa.blood.pressure" name="u_B_AA" units="kPa"/>
         <variable initial_value="80" name="E_B_AA" units="kPa_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -984,9 +984,9 @@
             </apply>
         </math>
         <!-- Celiac branch of the aorta -->
-        <variable initial_value="0.1" name="q_B_celiac" units="litre"/>
+        <variable cmeta:id="celiac.blood.volume" initial_value="0.1" name="q_B_celiac" units="litre"/>
         <variable initial_value="0.06" name="q_B_celiac_us" units="litre"/>
-        <variable name="u_B_celiac" units="kPa"/>
+        <variable cmeta:id="celiac.blood.pressure" name="u_B_celiac" units="kPa"/>
         <variable initial_value="400" name="E_B_celiac" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_celiac" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1044,7 +1044,7 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_celiac" units="L_per_s"/>
+        <variable cmeta:id="celiac.blood.flow" name="v_B_celiac" units="L_per_s"/>
         <variable initial_value="100" name="R_B_celiac" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1062,9 +1062,9 @@
             </apply>
         </math>
         <!-- Superior mesentery branch of the aorta -->
-        <variable initial_value="0.1" name="q_B_supMes" units="litre"/>
+        <variable cmeta:id="sup-mes.blood.volume" initial_value="0.1" name="q_B_supMes" units="litre"/>
         <variable initial_value="0.06" name="q_B_supMes_us" units="litre"/>
-        <variable name="u_B_supMes" units="kPa"/>
+        <variable cmeta:id="sup-mes.blood.pressure" name="u_B_supMes" units="kPa"/>
         <variable initial_value="400" name="E_B_supMes" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_supMes" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1118,7 +1118,7 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_supMes" units="L_per_s"/>
+        <variable cmeta:id="sup-mes.blood.flow" name="v_B_supMes" units="L_per_s"/>
         <variable initial_value="100" name="R_B_supMes" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1136,7 +1136,7 @@
             </apply>
         </math>
         <!-- Inferior mesentery branch of the aorta -->
-        <variable name="v_B_infMes" units="L_per_s"/>
+        <variable cmeta:id="inf-mes.blood.flow" name="v_B_infMes" units="L_per_s"/>
         <variable initial_value="100" name="R_B_infMes" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1154,9 +1154,9 @@
             </apply>
         </math>
         <!-- Stomach-->
-        <variable initial_value="0.1" name="q_B_stomach" units="litre"/>
+        <variable cmeta:id="stomach.blood.volume" initial_value="0.1" name="q_B_stomach" units="litre"/>
         <variable initial_value="0.06" name="q_B_stomach_us" units="litre"/>
-        <variable name="u_B_stomach" units="kPa"/>
+        <variable cmeta:id="stomach.blood.pressure" name="u_B_stomach" units="kPa"/>
         <variable initial_value="100" name="E_B_stomach" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_stomach" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1202,8 +1202,8 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_stomach1" units="L_per_s"/>
-        <variable name="v_B_stomach2" units="L_per_s"/>
+        <variable cmeta:id="stomach1.blood.flow" name="v_B_stomach1" units="L_per_s"/>
+        <variable cmeta:id="stomach2.blood.flow" name="v_B_stomach2" units="L_per_s"/>
         <variable initial_value="100" name="R_B_stomach1" units="kPa_s_per_L"/>
         <variable initial_value="2400" name="R_B_stomach2" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1235,9 +1235,9 @@
             </apply>
         </math>
         <!-- Spleen-->
-        <variable initial_value="0.1" name="q_B_spleen" units="litre"/>
+        <variable cmeta:id="spleen.blood.volume" initial_value="0.1" name="q_B_spleen" units="litre"/>
         <variable initial_value="0.06" name="q_B_spleen_us" units="litre"/>
-        <variable name="u_B_spleen" units="kPa"/>
+        <variable cmeta:id="spleen.blood.pressure" name="u_B_spleen" units="kPa"/>
         <variable initial_value="100" name="E_B_spleen" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_spleen" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1283,8 +1283,8 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_spleen1" units="L_per_s"/>
-        <variable name="v_B_spleen2" units="L_per_s"/>
+        <variable cmeta:id="spleen1.blood.flow" name="v_B_spleen1" units="L_per_s"/>
+        <variable cmeta:id="spleen2.blood.flow" name="v_B_spleen2" units="L_per_s"/>
         <variable initial_value="100" name="R_B_spleen1" units="kPa_s_per_L"/>
         <variable initial_value="3000" name="R_B_spleen2" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1316,9 +1316,9 @@
             </apply>
         </math>
         <!-- Pancreas-->
-        <variable initial_value="0.1" name="q_B_pancreas" units="litre"/>
+        <variable cmeta:id="pancreas.blood.volume" initial_value="0.1" name="q_B_pancreas" units="litre"/>
         <variable initial_value="0.06" name="q_B_pancreas_us" units="litre"/>
-        <variable name="u_B_pancreas" units="kPa"/>
+        <variable cmeta:id="pancreas.blood.pressure" name="u_B_pancreas" units="kPa"/>
         <variable initial_value="100" name="E_B_pancreas" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_pancreas" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1368,9 +1368,9 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_pancreas1" units="L_per_s"/>
-        <variable name="v_B_pancreas2" units="L_per_s"/>
-        <variable name="v_B_pancreas3" units="L_per_s"/>
+        <variable cmeta:id="pancreas1.blood.flow" name="v_B_pancreas1" units="L_per_s"/>
+        <variable cmeta:id="pancreas2.blood.flow" name="v_B_pancreas2" units="L_per_s"/>
+        <variable cmeta:id="pancreas3.blood.flow" name="v_B_pancreas3" units="L_per_s"/>
         <variable initial_value="100" name="R_B_pancreas1" units="kPa_s_per_L"/>
         <variable initial_value="100" name="R_B_pancreas2" units="kPa_s_per_L"/>
         <variable initial_value="4000" name="R_B_pancreas3" units="kPa_s_per_L"/>
@@ -1416,9 +1416,9 @@
             </apply>
         </math>
         <!-- Intestine-->
-        <variable initial_value="0.1" name="q_B_intestine" units="litre"/>
+        <variable cmeta:id="intestine.blood.volume" initial_value="0.1" name="q_B_intestine" units="litre"/>
         <variable initial_value="0.06" name="q_B_intestine_us" units="litre"/>
-        <variable name="u_B_intestine" units="kPa"/>
+        <variable cmeta:id="intestine.blood.pressure" name="u_B_intestine" units="kPa"/>
         <variable initial_value="100" name="E_B_intestine" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1451,8 +1451,8 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_intestine1" units="L_per_s"/>
-        <variable name="v_B_intestine2" units="L_per_s"/>
+        <variable cmeta:id="intestine1.blood.flow" name="v_B_intestine1" units="L_per_s"/>
+        <variable cmeta:id="intestine2.blood.flow" name="v_B_intestine2" units="L_per_s"/>
         <variable initial_value="100" name="R_B_intestine1" units="kPa_s_per_L"/>
         <variable initial_value="1200" name="R_B_intestine2" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1484,9 +1484,9 @@
             </apply>
         </math>
         <!-- Colon-->
-        <variable initial_value="0.1" name="q_B_colon" units="litre"/>
+        <variable cmeta:id="colon.blood.volume" initial_value="0.1" name="q_B_colon" units="litre"/>
         <variable initial_value="0.06" name="q_B_colon_us" units="litre"/>
-        <variable name="u_B_colon" units="kPa"/>
+        <variable cmeta:id="colon.blood.pressure" name="u_B_colon" units="kPa"/>
         <variable initial_value="100" name="E_B_colon" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_colon" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1536,8 +1536,8 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_colon1" units="L_per_s"/>
-        <variable name="v_B_colon2" units="L_per_s"/>
+        <variable cmeta:id="colon1.blood.flow" name="v_B_colon1" units="L_per_s"/>
+        <variable cmeta:id="colon2.blood.flow" name="v_B_colon2" units="L_per_s"/>
         <variable initial_value="100" name="R_B_colon1" units="kPa_s_per_L"/>
         <variable initial_value="2000" name="R_B_colon2" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1569,9 +1569,9 @@
             </apply>
         </math>
         <!-- Portal vein-->
-        <variable initial_value="0.1" name="q_B_portalVein" units="litre"/>
+        <variable cmeta:id="portal-vein.blood.volume" initial_value="0.1" name="q_B_portalVein" units="litre"/>
         <variable initial_value="0.06" name="q_B_portalVein_us" units="litre"/>
-        <variable name="u_B_portalVein" units="kPa"/>
+        <variable cmeta:id="portal-vein.blood.pressure" name="u_B_portalVein" units="kPa"/>
         <variable initial_value="50" name="E_B_portalVein" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_portalVein" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1624,7 +1624,7 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_portalVein" units="L_per_s"/>
+        <variable cmeta:id="portal-vein.blood.flow" name="v_B_portalVein" units="L_per_s"/>
         <variable initial_value="100" name="R_B_portalVein" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1642,9 +1642,9 @@
             </apply>
         </math>
         <!-- Liver-->
-        <variable initial_value="0.2" name="q_B_liver" units="litre"/>
+        <variable cmeta:id="liver.blood.volume" initial_value="0.2" name="q_B_liver" units="litre"/>
         <variable initial_value="0.06" name="q_B_liver_us" units="litre"/>
-        <variable name="u_B_liver" units="kPa"/>
+        <variable cmeta:id="liver.blood.pressure" name="u_B_liver" units="kPa"/>
         <variable initial_value="10" name="E_B_liver" units="kPa_per_L"/>
         <variable initial_value="-0.50" name="z_liver" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1694,8 +1694,8 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_liver1" units="L_per_s"/>
-        <variable name="v_B_liver2" units="L_per_s"/>
+        <variable cmeta:id="liver1.blood.flow" name="v_B_liver1" units="L_per_s"/>
+        <variable cmeta:id="liver2.blood.flow" name="v_B_liver2" units="L_per_s"/>
         <variable initial_value="800" name="R_B_liver1" units="kPa_s_per_L"/>
         <variable initial_value="1" name="R_B_liver2" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
