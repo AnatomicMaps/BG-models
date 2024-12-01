@@ -1,0 +1,34 @@
+{
+    "features": {
+        "CardioVascularSystem/SHAPE_4": {
+            "models": "cvs:pressure.liver",
+            "label": "Pressure of the blood in the liver compartment."
+        },
+
+        "CardioVascularSystem/SHAPE_8": {
+            "models": "cvs:flow.celiac-liver",
+            "label": "Flow rate of the blood entering the liver via the celiac artery."
+        },
+        "CardioVascularSystem/SHAPE_12": {
+            "models": "cvs:flow.hepatic-liver",
+            "label": "Flow rate of the blood leaving the liver via the hepatic vein."
+        },
+        "CardioVascularSystem/SHAPE_21": {
+            "models": "cvs:pressure.intestine",
+            "label": "Pressure of the blood in the intestine compartment."
+        },
+
+        "CardioVascularSystem/SHAPE_31": {
+            "models": "cvs:pressure.left-glomerulus",
+            "label": "Pressure of the blood in the left glomerulus compartment."
+        },
+        "CardioVascularSystem/SHAPE_45": {
+            "models": "cvs:pressure.left-peritubular",
+            "label": "Pressure of the blood in the left peritubular compartment."
+        },
+        "CardioVascularSystem/SHAPE_211": {
+            "models": "cvs:flow.portal-liver",
+            "label": "Flow rate of the blood entering the liver via the portal vein."
+        }
+    }
+}
