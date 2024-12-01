@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0'?>
 <model name="my_model" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#" xmlns:cmeta="http://www.cellml.org/metadata/1.0#">
     <!-- BG CVS model extended to include liver, stomach, spleen, pancreas, intestines, colon, brain, limbs and muscle in torso-->
     <units name="dim">
