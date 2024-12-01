@@ -1,6 +1,7 @@
 {
     "id": "CardioVascularSystem",
     "models": "BG:CardioVascular",
+    "properties": "properties.json",
     "kind": "functional",
     "sources": [
         {

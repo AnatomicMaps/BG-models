@@ -1,0 +1,176 @@
+@prefix OPB: <http://bhi.washington.edu/OPB#> .
+@prefix UBERON: <http://purl.obolibrary.org/obo/UBERON_> .
+@prefix bqbiol: <http://biomodels.net/biology-qualifiers/> .
+@prefix local: <http://omex-library.org/annotations.ttl#> .
+
+<http://omex-library.org/models/cvs-model.cellml#aa.blood.pressure> bqbiol:isPropertyOf local:local-node-1034 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#aa.blood.volume> bqbiol:isPropertyOf local:local-node-1034 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#brain-vein.blood.pressure> bqbiol:isPropertyOf local:local-node-1033 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#brain-vein.blood.volume> bqbiol:isPropertyOf local:local-node-1033 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#brain.blood.pressure> bqbiol:isPropertyOf local:local-node-1032 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#brain.blood.volume> bqbiol:isPropertyOf local:local-node-1032 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#celiac.blood.pressure> bqbiol:isPropertyOf local:local-node-1035 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#celiac.blood.volume> bqbiol:isPropertyOf local:local-node-1035 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#colon.blood.pressure> bqbiol:isPropertyOf local:local-node-1041 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#colon.blood.volume> bqbiol:isPropertyOf local:local-node-1041 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#intestine.blood.pressure> bqbiol:isPropertyOf local:local-node-1040 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#intestine.blood.volume> bqbiol:isPropertyOf local:local-node-1040 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#la.blood.pressure> bqbiol:isPropertyOf local:local-node-1027 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#la.blood.volume> bqbiol:isPropertyOf local:local-node-1027 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#liver.blood.pressure> bqbiol:isPropertyOf local:local-node-1043 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#liver.blood.volume> bqbiol:isPropertyOf local:local-node-1043 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#lung.blood.pressure> bqbiol:isPropertyOf local:local-node-1030 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#lung.blood.volume> bqbiol:isPropertyOf local:local-node-1030 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#lv.blood.pressure> bqbiol:isPropertyOf local:local-node-1025 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#lv.blood.volume> bqbiol:isPropertyOf local:local-node-1025 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#pa.blood.pressure> bqbiol:isPropertyOf local:local-node-1029 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#pa.blood.volume> bqbiol:isPropertyOf local:local-node-1029 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#pancreas.blood.pressure> bqbiol:isPropertyOf local:local-node-1039 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#pancreas.blood.volume> bqbiol:isPropertyOf local:local-node-1039 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#portal-vein.blood.pressure> bqbiol:isPropertyOf local:local-node-1042 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#portal-vein.blood.volume> bqbiol:isPropertyOf local:local-node-1042 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#pulm-vein.blood.pressure> bqbiol:isPropertyOf local:local-node-1031 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#pulm-vein.blood.volume> bqbiol:isPropertyOf local:local-node-1031 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#ra.blood.pressure> bqbiol:isPropertyOf local:local-node-1028 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#ra.blood.volume> bqbiol:isPropertyOf local:local-node-1028 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#rv.blood.pressure> bqbiol:isPropertyOf local:local-node-1026 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#rv.blood.volume> bqbiol:isPropertyOf local:local-node-1026 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#spleen.blood.pressure> bqbiol:isPropertyOf local:local-node-1038 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#spleen.blood.volume> bqbiol:isPropertyOf local:local-node-1038 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#stomach.blood.pressure> bqbiol:isPropertyOf local:local-node-1037 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#stomach.blood.volume> bqbiol:isPropertyOf local:local-node-1037 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+<http://omex-library.org/models/cvs-model.cellml#sup-mes.blood.pressure> bqbiol:isPropertyOf local:local-node-1036 ;
+    bqbiol:isVersionOf OPB:OPB_00509 .
+
+<http://omex-library.org/models/cvs-model.cellml#sup-mes.blood.volume> bqbiol:isPropertyOf local:local-node-1036 ;
+    bqbiol:isVersionOf OPB:OPB_00154 .
+
+local:local-node-1025 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0016514 .
+
+local:local-node-1026 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0016509 .
+
+local:local-node-1027 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0016513 .
+
+local:local-node-1028 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0016522 .
+
+local:local-node-1029 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0002012 .
+
+local:local-node-1030 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0000102 .
+
+local:local-node-1031 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0002016 .
+
+local:local-node-1032 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0008998 .
+
+local:local-node-1033 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:2005031 .
+
+local:local-node-1034 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0001496 .
+
+local:local-node-1035 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0001640 .
+
+local:local-node-1036 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0001182 .
+
+local:local-node-1037 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0000945 .
+
+local:local-node-1038 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0036301 .
+
+local:local-node-1039 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0001264 .
+
+local:local-node-1040 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0000160 .
+
+local:local-node-1041 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0001155 .
+
+local:local-node-1042 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0002017 .
+
+local:local-node-1043 bqbiol:is UBERON:0000178 ;
+    bqbiol:isPartOf UBERON:0006877 .
+

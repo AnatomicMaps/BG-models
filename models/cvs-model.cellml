@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<model name="my_model" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+<?xml version='1.0'?>
+<model name="my_model" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#" xmlns:cmeta="http://www.cellml.org/metadata/1.0#">
     <!-- BG CVS model extended to include liver, stomach, spleen, pancreas, intestines, colon, brain, limbs and muscle in torso-->
     <units name="dim">
         <unit units="dimensionless"/>
@@ -147,9 +147,11 @@
         </math>
         <!--Left ventricle-->
         <variable name="E_B_LV" units="kPa_per_L"/>
-        <variable initial_value="3" name="E_B_LVmax" units="kPa_per_L"/>
-        <variable initial_value="2" name="q_B_LV" units="litre"/>
-        <variable name="u_B_LV" units="kPa"/>
+        <variable initial_value="320" name="E_B_LVmax" units="kPa_per_L"/>
+        <variable initial_value="6.667" name="E_B_LVmin" units="kPa_per_L"/>
+        <variable cmeta:id="lv.blood.volume" initial_value="1" name="q_B_LV" units="litre"/>
+        <variable initial_value="0.005" name="q_B_LV_us" units="litre"/>
+        <variable cmeta:id="lv.blood.pressure" name="u_B_LV" units="kPa"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -157,36 +159,44 @@
                 <piecewise>
                     <piece>
                         <apply>
-                            <times/>
+                            <plus/>
                             <apply>
-                                <divide/>
+                                <times/>
                                 <apply>
-                                    <times/>
-                                    <ci>E_B_LVmax</ci>
-                                    <ci>mt</ci>
-                                </apply>
-                                <ci>To_pk</ci>
-                            </apply>
-                            <apply>
-                                <exp/>
-                                <apply>
-                                    <times/>
-                                    <cn cellml:units="dim">0.5</cn>
+                                    <divide/>
                                     <apply>
-                                        <minus/>
-                                        <cn cellml:units="dim">1</cn>
+                                        <times/>
                                         <apply>
-                                            <power/>
+                                            <minus/>
+                                            <ci>E_B_LVmax</ci>
+                                            <ci>E_B_LVmin</ci>
+                                        </apply>
+                                        <ci>mt</ci>
+                                    </apply>
+                                    <ci>To_pk</ci>
+                                </apply>
+                                <apply>
+                                    <exp/>
+                                    <apply>
+                                        <times/>
+                                        <cn cellml:units="dim">0.5</cn>
+                                        <apply>
+                                            <minus/>
+                                            <cn cellml:units="dim">1</cn>
                                             <apply>
-                                                <divide/>
-                                                <ci>mt</ci>
-                                                <ci>To_pk</ci>
+                                                <power/>
+                                                <apply>
+                                                    <divide/>
+                                                    <ci>mt</ci>
+                                                    <ci>To_pk</ci>
+                                                </apply>
+                                                <cn cellml:units="dimensionless">2</cn>
                                             </apply>
-                                            <cn cellml:units="dimensionless">2</cn>
                                         </apply>
                                     </apply>
                                 </apply>
                             </apply>
+                            <ci>E_B_LVmin</ci>
                         </apply>
                         <apply>
                             <lt/>
@@ -196,36 +206,44 @@
                     </piece>
                     <piece>
                         <apply>
-                            <times/>
+                            <plus/>
                             <apply>
-                                <divide/>
+                                <times/>
                                 <apply>
-                                    <times/>
-                                    <ci>E_B_LVmax</ci>
-                                    <cn cellml:units="dim">0.4</cn>
-                                </apply>
-                                <ci>To_pk</ci>
-                            </apply>
-                            <apply>
-                                <exp/>
-                                <apply>
-                                    <times/>
-                                    <cn cellml:units="dim">0.5</cn>
+                                    <divide/>
                                     <apply>
-                                        <minus/>
-                                        <cn cellml:units="dim">1</cn>
+                                        <times/>
                                         <apply>
-                                            <power/>
+                                            <minus/>
+                                            <ci>E_B_LVmax</ci>
+                                            <ci>E_B_LVmin</ci>
+                                        </apply>
+                                        <cn cellml:units="dim">0.4</cn>
+                                    </apply>
+                                    <ci>To_pk</ci>
+                                </apply>
+                                <apply>
+                                    <exp/>
+                                    <apply>
+                                        <times/>
+                                        <cn cellml:units="dim">0.5</cn>
+                                        <apply>
+                                            <minus/>
+                                            <cn cellml:units="dim">1</cn>
                                             <apply>
-                                                <divide/>
-                                                <cn cellml:units="dim">0.4</cn>
-                                                <ci>To_pk</ci>
+                                                <power/>
+                                                <apply>
+                                                    <divide/>
+                                                    <cn cellml:units="dim">0.4</cn>
+                                                    <ci>To_pk</ci>
+                                                </apply>
+                                                <cn cellml:units="dimensionless">2</cn>
                                             </apply>
-                                            <cn cellml:units="dimensionless">2</cn>
                                         </apply>
                                     </apply>
                                 </apply>
                             </apply>
+                            <ci>E_B_LVmin</ci>
                         </apply>
                         <apply>
                             <lt/>
@@ -234,7 +252,7 @@
                         </apply>
                     </piece>
                     <otherwise>
-                        <cn cellml:units="kPa_per_L">0</cn>
+                        <ci>E_B_LVmin</ci>
                     </otherwise>
                 </piecewise>
             </apply>
@@ -259,15 +277,21 @@
                 <apply>
                     <times/>
                     <ci>E_B_LV</ci>
-                    <ci>q_B_LV</ci>
+                    <apply>
+                        <minus/>
+                        <ci>q_B_LV</ci>
+                        <ci>q_B_LV_us</ci>
+                    </apply>
                 </apply>
             </apply>
         </math>
         <!--Right ventricle-->
         <variable name="E_B_RV" units="kPa_per_L"/>
-        <variable initial_value="2" name="E_B_RVmax" units="kPa_per_L"/>
-        <variable initial_value="2" name="q_B_RV" units="litre"/>
-        <variable name="u_B_RV" units="kPa"/>
+        <variable initial_value="70" name="E_B_RVmax" units="kPa_per_L"/>
+        <variable initial_value="2" name="E_B_RVmin" units="kPa_per_L"/>
+        <variable cmeta:id="rv.blood.volume" initial_value="0.2" name="q_B_RV" units="litre"/>
+        <variable initial_value="0.01" name="q_B_RV_us" units="litre"/>
+        <variable cmeta:id="rv.blood.pressure" name="u_B_RV" units="kPa"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -275,36 +299,44 @@
                 <piecewise>
                     <piece>
                         <apply>
-                            <times/>
+                            <plus/>
                             <apply>
-                                <divide/>
+                                <times/>
                                 <apply>
-                                    <times/>
-                                    <ci>E_B_RVmax</ci>
-                                    <ci>mt</ci>
-                                </apply>
-                                <ci>To_pk</ci>
-                            </apply>
-                            <apply>
-                                <exp/>
-                                <apply>
-                                    <times/>
-                                    <cn cellml:units="dim">0.5</cn>
+                                    <divide/>
                                     <apply>
-                                        <minus/>
-                                        <cn cellml:units="dim">1</cn>
+                                        <times/>
                                         <apply>
-                                            <power/>
+                                            <minus/>
+                                            <ci>E_B_RVmax</ci>
+                                            <ci>E_B_RVmin</ci>
+                                        </apply>
+                                        <ci>mt</ci>
+                                    </apply>
+                                    <ci>To_pk</ci>
+                                </apply>
+                                <apply>
+                                    <exp/>
+                                    <apply>
+                                        <times/>
+                                        <cn cellml:units="dim">0.5</cn>
+                                        <apply>
+                                            <minus/>
+                                            <cn cellml:units="dim">1</cn>
                                             <apply>
-                                                <divide/>
-                                                <ci>mt</ci>
-                                                <ci>To_pk</ci>
+                                                <power/>
+                                                <apply>
+                                                    <divide/>
+                                                    <ci>mt</ci>
+                                                    <ci>To_pk</ci>
+                                                </apply>
+                                                <cn cellml:units="dimensionless">2</cn>
                                             </apply>
-                                            <cn cellml:units="dimensionless">2</cn>
                                         </apply>
                                     </apply>
                                 </apply>
                             </apply>
+                            <ci>E_B_RVmin</ci>
                         </apply>
                         <apply>
                             <lt/>
@@ -314,36 +346,44 @@
                     </piece>
                     <piece>
                         <apply>
-                            <times/>
+                            <plus/>
                             <apply>
-                                <divide/>
+                                <times/>
                                 <apply>
-                                    <times/>
-                                    <ci>E_B_RVmax</ci>
-                                    <cn cellml:units="dim">0.4</cn>
-                                </apply>
-                                <ci>To_pk</ci>
-                            </apply>
-                            <apply>
-                                <exp/>
-                                <apply>
-                                    <times/>
-                                    <cn cellml:units="dim">0.5</cn>
+                                    <divide/>
                                     <apply>
-                                        <minus/>
-                                        <cn cellml:units="dim">1</cn>
+                                        <times/>
                                         <apply>
-                                            <power/>
+                                            <minus/>
+                                            <ci>E_B_RVmax</ci>
+                                            <ci>E_B_RVmin</ci>
+                                        </apply>
+                                        <cn cellml:units="dim">0.4</cn>
+                                    </apply>
+                                    <ci>To_pk</ci>
+                                </apply>
+                                <apply>
+                                    <exp/>
+                                    <apply>
+                                        <times/>
+                                        <cn cellml:units="dim">0.5</cn>
+                                        <apply>
+                                            <minus/>
+                                            <cn cellml:units="dim">1</cn>
                                             <apply>
-                                                <divide/>
-                                                <cn cellml:units="dim">0.4</cn>
-                                                <ci>To_pk</ci>
+                                                <power/>
+                                                <apply>
+                                                    <divide/>
+                                                    <cn cellml:units="dim">0.4</cn>
+                                                    <ci>To_pk</ci>
+                                                </apply>
+                                                <cn cellml:units="dimensionless">2</cn>
                                             </apply>
-                                            <cn cellml:units="dimensionless">2</cn>
                                         </apply>
                                     </apply>
                                 </apply>
                             </apply>
+                            <ci>E_B_RVmin</ci>
                         </apply>
                         <apply>
                             <lt/>
@@ -352,7 +392,7 @@
                         </apply>
                     </piece>
                     <otherwise>
-                        <cn cellml:units="kPa_per_L">0</cn>
+                        <ci>E_B_RVmin</ci>
                     </otherwise>
                 </piecewise>
             </apply>
@@ -377,14 +417,19 @@
                 <apply>
                     <times/>
                     <ci>E_B_RV</ci>
-                    <ci>q_B_RV</ci>
+                    <apply>
+                        <minus/>
+                        <ci>q_B_RV</ci>
+                        <ci>q_B_RV_us</ci>
+                    </apply>
                 </apply>
             </apply>
         </math>
         <!-- Left atrium-->
         <variable initial_value="10" name="E_B_LA" units="kPa_per_L"/>
-        <variable initial_value="0.02" name="q_B_LA" units="litre"/>
-        <variable name="u_B_LA" units="kPa"/>
+        <variable cmeta:id="la.blood.volume" initial_value="0.02" name="q_B_LA" units="litre"/>
+        <variable initial_value="0.004" name="q_B_LA_us" units="litre"/>
+        <variable cmeta:id="la.blood.pressure" name="u_B_LA" units="kPa"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -407,14 +452,19 @@
                 <apply>
                     <times/>
                     <ci>E_B_LA</ci>
-                    <ci>q_B_LA</ci>
+                    <apply>
+                        <minus/>
+                        <ci>q_B_LA</ci>
+                        <ci>q_B_LA_us</ci>
+                    </apply>
                 </apply>
             </apply>
         </math>
         <!-- Right atrium-->
         <variable initial_value="10" name="E_B_RA" units="kPa_per_L"/>
-        <variable initial_value="0.02" name="q_B_RA" units="litre"/>
-        <variable name="u_B_RA" units="kPa"/>
+        <variable cmeta:id="ra.blood.volume" initial_value="0.02" name="q_B_RA" units="litre"/>
+        <variable initial_value="0.004" name="q_B_RA_us" units="litre"/>
+        <variable cmeta:id="ra.blood.pressure" name="u_B_RA" units="kPa"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -448,13 +498,17 @@
                 <apply>
                     <times/>
                     <ci>E_B_RA</ci>
-                    <ci>q_B_RA</ci>
+                    <apply>
+                        <minus/>
+                        <ci>q_B_RA</ci>
+                        <ci>q_B_RA_us</ci>
+                    </apply>
                 </apply>
             </apply>
         </math>
         <!-- Aortic valve-->
         <variable initial_value="1" name="R_B_AV" units="kPa_s_per_L"/>
-        <variable name="v_B_AV" units="L_per_s"/>
+        <variable cmeta:id="av.blood.flow" name="v_B_AV" units="L_per_s"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -484,7 +538,7 @@
         </math>
         <!-- Pulmonary Valve-->
         <variable initial_value="1" name="R_B_PV" units="kPa_s_per_L"/>
-        <variable name="v_B_PV" units="L_per_s"/>
+        <variable cmeta:id="pv.blood.flow" name="v_B_PV" units="L_per_s"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -514,7 +568,7 @@
         </math>
         <!-- Tricuspid Valve-->
         <variable initial_value="1" name="R_B_TV" units="kPa_s_per_L"/>
-        <variable name="v_B_TV" units="L_per_s"/>
+        <variable cmeta:id="tv.blood.flow" name="v_B_TV" units="L_per_s"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -544,7 +598,7 @@
         </math>
         <!-- Mitral Valve-->
         <variable initial_value="1" name="R_B_MV" units="kPa_s_per_L"/>
-        <variable name="v_B_MV" units="L_per_s"/>
+        <variable cmeta:id="mv.blood.flow" name="v_B_MV" units="L_per_s"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -573,9 +627,10 @@
             </apply>
         </math>
         <!-- Pulmonary artery-->
-        <variable initial_value="0.3" name="q_B_PA" units="litre"/>
-        <variable name="u_B_PA" units="kPa"/>
-        <variable initial_value="10" name="E_B_PA" units="kPa_per_L"/>
+        <variable cmeta:id="pa.blood.volume" initial_value="0.3" name="q_B_PA" units="litre"/>
+        <variable initial_value="0.2" name="q_B_PA_us" units="litre"/>
+        <variable cmeta:id="pa.blood.pressure" name="u_B_PA" units="kPa"/>
+        <variable initial_value="200" name="E_B_PA" units="kPa_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -598,14 +653,19 @@
                 <apply>
                     <times/>
                     <ci>E_B_PA</ci>
-                    <ci>q_B_PA</ci>
+                    <apply>
+                        <minus/>
+                        <ci>q_B_PA</ci>
+                        <ci>q_B_PA_us</ci>
+                    </apply>
                 </apply>
             </apply>
         </math>
         <!-- Lungs  -->
-        <variable initial_value="0.2" name="q_B_lung" units="litre"/>
-        <variable name="u_B_lung" units="kPa"/>
-        <variable initial_value="20" name="E_B_lung" units="kPa_per_L"/>
+        <variable cmeta:id="lung.blood.volume" initial_value="0.2" name="q_B_lung" units="litre"/>
+        <variable initial_value="0.1" name="q_B_lung_us" units="litre"/>
+        <variable cmeta:id="lung.blood.pressure" name="u_B_lung" units="kPa"/>
+        <variable initial_value="100" name="E_B_lung" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_lung" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -631,7 +691,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_lung</ci>
-                        <ci>q_B_lung</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_lung</ci>
+                            <ci>q_B_lung_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -646,9 +710,9 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_lung1" units="L_per_s"/>
-        <variable name="v_B_lung2" units="L_per_s"/>
-        <variable initial_value="50" name="R_B_lung1" units="kPa_s_per_L"/>
+        <variable cmeta:id="lung1.blood.flow" name="v_B_lung1" units="L_per_s"/>
+        <variable cmeta:id="lung2.blood.flow" name="v_B_lung2" units="L_per_s"/>
+        <variable initial_value="3" name="R_B_lung1" units="kPa_s_per_L"/>
         <variable initial_value="10" name="R_B_lung2" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -679,9 +743,10 @@
             </apply>
         </math>
         <!-- Pulmonary vein-->
-        <variable initial_value="10" name="E_B_pulmVein" units="kPa_per_L"/>
-        <variable initial_value="0.02" name="q_B_pulmVein" units="litre"/>
-        <variable name="u_B_pulmVein" units="kPa"/>
+        <variable initial_value="20" name="E_B_pulmVein" units="kPa_per_L"/>
+        <variable cmeta:id="pulm-vein.blood.volume" initial_value="0.02" name="q_B_pulmVein" units="litre"/>
+        <variable initial_value="0.012" name="q_B_pulmVein_us" units="litre"/>
+        <variable cmeta:id="pulm-vein.blood.pressure" name="u_B_pulmVein" units="kPa"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -704,11 +769,15 @@
                 <apply>
                     <times/>
                     <ci>E_B_pulmVein</ci>
-                    <ci>q_B_pulmVein</ci>
+                    <apply>
+                        <minus/>
+                        <ci>q_B_pulmVein</ci>
+                        <ci>q_B_pulmVein_us</ci>
+                    </apply>
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_pulmVein" units="L_per_s"/>
+        <variable cmeta:id="pulm-vein.blood.flow" name="v_B_pulmVein" units="L_per_s"/>
         <variable initial_value="1" name="R_B_pulmVein" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -726,10 +795,12 @@
             </apply>
         </math>
         <!-- Brain-->
-        <variable initial_value="0.5" name="q_B_brain" units="litre"/>
-        <variable initial_value="0.5" name="q_B_brainVein" units="litre"/>
-        <variable name="u_B_brain" units="kPa"/>
-        <variable name="u_B_brainVein" units="kPa"/>
+        <variable cmeta:id="brain.blood.volume" initial_value="0.1" name="q_B_brain" units="litre"/>
+        <variable initial_value="0.06" name="q_B_brain_us" units="litre"/>
+        <variable cmeta:id="brain-vein.blood.volume" initial_value="0.1" name="q_B_brainVein" units="litre"/>
+        <variable initial_value="0.06" name="q_B_brainVein_us" units="litre"/>
+        <variable cmeta:id="brain.blood.pressure" name="u_B_brain" units="kPa"/>
+        <variable cmeta:id="brain-vein.blood.pressure" name="u_B_brainVein" units="kPa"/>
         <variable initial_value="20" name="E_B_brain" units="kPa_per_L"/>
         <variable initial_value="20" name="E_B_brainVein" units="kPa_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -754,7 +825,11 @@
                 <apply>
                     <times/>
                     <ci>E_B_brain</ci>
-                    <ci>q_B_brain</ci>
+                    <apply>
+                        <minus/>
+                        <ci>q_B_brain</ci>
+                        <ci>q_B_brain_us</ci>
+                    </apply>
                 </apply>
             </apply>
             <apply>
@@ -778,16 +853,20 @@
                 <apply>
                     <times/>
                     <ci>E_B_brainVein</ci>
-                    <ci>q_B_brainVein</ci>
+                    <apply>
+                        <minus/>
+                        <ci>q_B_brainVein</ci>
+                        <ci>q_B_brainVein_us</ci>
+                    </apply>
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_brain1" units="L_per_s"/>
-        <variable name="v_B_brain2" units="L_per_s"/>
-        <variable name="v_B_brain3" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_brain1" units="kPa_s_per_L"/>
-        <variable initial_value="2000" name="R_B_brain2" units="kPa_s_per_L"/>
-        <variable initial_value="2000" name="R_B_brain3" units="kPa_s_per_L"/>
+        <variable cmeta:id="brain1.blood.flow" name="v_B_brain1" units="L_per_s"/>
+        <variable cmeta:id="brain2.blood.flow" name="v_B_brain2" units="L_per_s"/>
+        <variable cmeta:id="brain3.blood.flow" name="v_B_brain3" units="L_per_s"/>
+        <variable initial_value="100" name="R_B_brain1" units="kPa_s_per_L"/>
+        <variable initial_value="600" name="R_B_brain2" units="kPa_s_per_L"/>
+        <variable initial_value="1" name="R_B_brain3" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -830,9 +909,10 @@
             </apply>
         </math>
         <!-- Ascending aorta-->
-        <variable initial_value="0.5" name="q_B_AA" units="litre"/>
-        <variable name="u_B_AA" units="kPa"/>
-        <variable initial_value="20" name="E_B_AA" units="kPa_per_L"/>
+        <variable cmeta:id="aa.blood.volume" initial_value="0.2" name="q_B_AA" units="litre"/>
+        <variable initial_value="0.12" name="q_B_AA_us" units="litre"/>
+        <variable cmeta:id="aa.blood.pressure" name="u_B_AA" units="kPa"/>
+        <variable initial_value="80" name="E_B_AA" units="kPa_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -895,14 +975,19 @@
                 <apply>
                     <times/>
                     <ci>E_B_AA</ci>
-                    <ci>q_B_AA</ci>
+                    <apply>
+                        <minus/>
+                        <ci>q_B_AA</ci>
+                        <ci>q_B_AA_us</ci>
+                    </apply>
                 </apply>
             </apply>
         </math>
         <!-- Celiac branch of the aorta -->
-        <variable initial_value="0.2" name="q_B_celiac" units="litre"/>
-        <variable name="u_B_celiac" units="kPa"/>
-        <variable initial_value="20" name="E_B_celiac" units="kPa_per_L"/>
+        <variable cmeta:id="celiac.blood.volume" initial_value="0.1" name="q_B_celiac" units="litre"/>
+        <variable initial_value="0.06" name="q_B_celiac_us" units="litre"/>
+        <variable cmeta:id="celiac.blood.pressure" name="u_B_celiac" units="kPa"/>
+        <variable initial_value="400" name="E_B_celiac" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_celiac" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -940,7 +1025,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_celiac</ci>
-                        <ci>q_B_celiac</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_celiac</ci>
+                            <ci>q_B_celiac_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -955,8 +1044,8 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_celiac" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_celiac" units="kPa_s_per_L"/>
+        <variable cmeta:id="celiac.blood.flow" name="v_B_celiac" units="L_per_s"/>
+        <variable initial_value="100" name="R_B_celiac" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -973,9 +1062,10 @@
             </apply>
         </math>
         <!-- Superior mesentery branch of the aorta -->
-        <variable initial_value="0.2" name="q_B_supMes" units="litre"/>
-        <variable name="u_B_supMes" units="kPa"/>
-        <variable initial_value="20" name="E_B_supMes" units="kPa_per_L"/>
+        <variable cmeta:id="sup-mes.blood.volume" initial_value="0.1" name="q_B_supMes" units="litre"/>
+        <variable initial_value="0.06" name="q_B_supMes_us" units="litre"/>
+        <variable cmeta:id="sup-mes.blood.pressure" name="u_B_supMes" units="kPa"/>
+        <variable initial_value="400" name="E_B_supMes" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_supMes" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1009,7 +1099,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_supMes</ci>
-                        <ci>q_B_supMes</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_supMes</ci>
+                            <ci>q_B_supMes_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -1024,8 +1118,8 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_supMes" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_supMes" units="kPa_s_per_L"/>
+        <variable cmeta:id="sup-mes.blood.flow" name="v_B_supMes" units="L_per_s"/>
+        <variable initial_value="100" name="R_B_supMes" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -1042,8 +1136,8 @@
             </apply>
         </math>
         <!-- Inferior mesentery branch of the aorta -->
-        <variable name="v_B_infMes" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_infMes" units="kPa_s_per_L"/>
+        <variable cmeta:id="inf-mes.blood.flow" name="v_B_infMes" units="L_per_s"/>
+        <variable initial_value="100" name="R_B_infMes" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -1060,9 +1154,10 @@
             </apply>
         </math>
         <!-- Stomach-->
-        <variable initial_value="0.2" name="q_B_stomach" units="litre"/>
-        <variable name="u_B_stomach" units="kPa"/>
-        <variable initial_value="20" name="E_B_stomach" units="kPa_per_L"/>
+        <variable cmeta:id="stomach.blood.volume" initial_value="0.1" name="q_B_stomach" units="litre"/>
+        <variable initial_value="0.06" name="q_B_stomach_us" units="litre"/>
+        <variable cmeta:id="stomach.blood.pressure" name="u_B_stomach" units="kPa"/>
+        <variable initial_value="100" name="E_B_stomach" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_stomach" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1088,7 +1183,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_stomach</ci>
-                        <ci>q_B_stomach</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_stomach</ci>
+                            <ci>q_B_stomach_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -1103,10 +1202,10 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_stomach1" units="L_per_s"/>
-        <variable name="v_B_stomach2" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_stomach1" units="kPa_s_per_L"/>
-        <variable initial_value="2000" name="R_B_stomach2" units="kPa_s_per_L"/>
+        <variable cmeta:id="stomach1.blood.flow" name="v_B_stomach1" units="L_per_s"/>
+        <variable cmeta:id="stomach2.blood.flow" name="v_B_stomach2" units="L_per_s"/>
+        <variable initial_value="100" name="R_B_stomach1" units="kPa_s_per_L"/>
+        <variable initial_value="2400" name="R_B_stomach2" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -1136,9 +1235,10 @@
             </apply>
         </math>
         <!-- Spleen-->
-        <variable initial_value="0.2" name="q_B_spleen" units="litre"/>
-        <variable name="u_B_spleen" units="kPa"/>
-        <variable initial_value="20" name="E_B_spleen" units="kPa_per_L"/>
+        <variable cmeta:id="spleen.blood.volume" initial_value="0.1" name="q_B_spleen" units="litre"/>
+        <variable initial_value="0.06" name="q_B_spleen_us" units="litre"/>
+        <variable cmeta:id="spleen.blood.pressure" name="u_B_spleen" units="kPa"/>
+        <variable initial_value="100" name="E_B_spleen" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_spleen" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1164,7 +1264,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_colon</ci>
-                        <ci>q_B_spleen</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_spleen</ci>
+                            <ci>q_B_spleen_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -1179,10 +1283,10 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_spleen1" units="L_per_s"/>
-        <variable name="v_B_spleen2" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_spleen1" units="kPa_s_per_L"/>
-        <variable initial_value="2000" name="R_B_spleen2" units="kPa_s_per_L"/>
+        <variable cmeta:id="spleen1.blood.flow" name="v_B_spleen1" units="L_per_s"/>
+        <variable cmeta:id="spleen2.blood.flow" name="v_B_spleen2" units="L_per_s"/>
+        <variable initial_value="100" name="R_B_spleen1" units="kPa_s_per_L"/>
+        <variable initial_value="3000" name="R_B_spleen2" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -1212,9 +1316,10 @@
             </apply>
         </math>
         <!-- Pancreas-->
-        <variable initial_value="0.2" name="q_B_pancreas" units="litre"/>
-        <variable name="u_B_pancreas" units="kPa"/>
-        <variable initial_value="20" name="E_B_pancreas" units="kPa_per_L"/>
+        <variable cmeta:id="pancreas.blood.volume" initial_value="0.1" name="q_B_pancreas" units="litre"/>
+        <variable initial_value="0.06" name="q_B_pancreas_us" units="litre"/>
+        <variable cmeta:id="pancreas.blood.pressure" name="u_B_pancreas" units="kPa"/>
+        <variable initial_value="100" name="E_B_pancreas" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_pancreas" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1244,7 +1349,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_pancreas</ci>
-                        <ci>q_B_pancreas</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_pancreas</ci>
+                            <ci>q_B_pancreas_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -1259,12 +1368,12 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_pancreas1" units="L_per_s"/>
-        <variable name="v_B_pancreas2" units="L_per_s"/>
-        <variable name="v_B_pancreas3" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_pancreas1" units="kPa_s_per_L"/>
-        <variable initial_value="6000" name="R_B_pancreas2" units="kPa_s_per_L"/>
-        <variable initial_value="2000" name="R_B_pancreas3" units="kPa_s_per_L"/>
+        <variable cmeta:id="pancreas1.blood.flow" name="v_B_pancreas1" units="L_per_s"/>
+        <variable cmeta:id="pancreas2.blood.flow" name="v_B_pancreas2" units="L_per_s"/>
+        <variable cmeta:id="pancreas3.blood.flow" name="v_B_pancreas3" units="L_per_s"/>
+        <variable initial_value="100" name="R_B_pancreas1" units="kPa_s_per_L"/>
+        <variable initial_value="100" name="R_B_pancreas2" units="kPa_s_per_L"/>
+        <variable initial_value="4000" name="R_B_pancreas3" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -1289,7 +1398,7 @@
                         <ci>u_B_supMes</ci>
                         <ci>u_B_pancreas</ci>
                     </apply>
-                    <ci>R_B_pancreas1</ci>
+                    <ci>R_B_pancreas2</ci>
                 </apply>
             </apply>
             <apply>
@@ -1302,14 +1411,15 @@
                         <ci>u_B_pancreas</ci>
                         <ci>u_B_portalVein</ci>
                     </apply>
-                    <ci>R_B_pancreas2</ci>
+                    <ci>R_B_pancreas3</ci>
                 </apply>
             </apply>
         </math>
         <!-- Intestine-->
-        <variable initial_value="0.2" name="q_B_intestine" units="litre"/>
-        <variable name="u_B_intestine" units="kPa"/>
-        <variable initial_value="20" name="E_B_intestine" units="kPa_per_L"/>
+        <variable cmeta:id="intestine.blood.volume" initial_value="0.1" name="q_B_intestine" units="litre"/>
+        <variable initial_value="0.06" name="q_B_intestine_us" units="litre"/>
+        <variable cmeta:id="intestine.blood.pressure" name="u_B_intestine" units="kPa"/>
+        <variable initial_value="100" name="E_B_intestine" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1333,14 +1443,18 @@
                 <apply>
                     <times/>
                     <ci>E_B_intestine</ci>
-                    <ci>q_B_intestine</ci>
+                    <apply>
+                        <minus/>
+                        <ci>q_B_intestine</ci>
+                        <ci>q_B_intestine_us</ci>
+                    </apply>
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_intestine1" units="L_per_s"/>
-        <variable name="v_B_intestine2" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_intestine1" units="kPa_s_per_L"/>
-        <variable initial_value="2000" name="R_B_intestine2" units="kPa_s_per_L"/>
+        <variable cmeta:id="intestine1.blood.flow" name="v_B_intestine1" units="L_per_s"/>
+        <variable cmeta:id="intestine2.blood.flow" name="v_B_intestine2" units="L_per_s"/>
+        <variable initial_value="100" name="R_B_intestine1" units="kPa_s_per_L"/>
+        <variable initial_value="1200" name="R_B_intestine2" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -1370,9 +1484,10 @@
             </apply>
         </math>
         <!-- Colon-->
-        <variable initial_value="0.2" name="q_B_colon" units="litre"/>
-        <variable name="u_B_colon" units="kPa"/>
-        <variable initial_value="20" name="E_B_colon" units="kPa_per_L"/>
+        <variable cmeta:id="colon.blood.volume" initial_value="0.1" name="q_B_colon" units="litre"/>
+        <variable initial_value="0.06" name="q_B_colon_us" units="litre"/>
+        <variable cmeta:id="colon.blood.pressure" name="u_B_colon" units="kPa"/>
+        <variable initial_value="100" name="E_B_colon" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_colon" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1402,7 +1517,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_colon</ci>
-                        <ci>q_B_colon</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_colon</ci>
+                            <ci>q_B_colon_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -1417,9 +1536,9 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_colon1" units="L_per_s"/>
-        <variable name="v_B_colon2" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_colon1" units="kPa_s_per_L"/>
+        <variable cmeta:id="colon1.blood.flow" name="v_B_colon1" units="L_per_s"/>
+        <variable cmeta:id="colon2.blood.flow" name="v_B_colon2" units="L_per_s"/>
+        <variable initial_value="100" name="R_B_colon1" units="kPa_s_per_L"/>
         <variable initial_value="2000" name="R_B_colon2" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1450,9 +1569,10 @@
             </apply>
         </math>
         <!-- Portal vein-->
-        <variable initial_value="0.2" name="q_B_portalVein" units="litre"/>
-        <variable name="u_B_portalVein" units="kPa"/>
-        <variable initial_value="20" name="E_B_portalVein" units="kPa_per_L"/>
+        <variable cmeta:id="portal-vein.blood.volume" initial_value="0.1" name="q_B_portalVein" units="litre"/>
+        <variable initial_value="0.06" name="q_B_portalVein_us" units="litre"/>
+        <variable cmeta:id="portal-vein.blood.pressure" name="u_B_portalVein" units="kPa"/>
+        <variable initial_value="50" name="E_B_portalVein" units="kPa_per_L"/>
         <variable initial_value="0.20" name="z_portalVein" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1485,7 +1605,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_portalVein</ci>
-                        <ci>q_B_portalVein</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_portalVein</ci>
+                            <ci>q_B_portalVein_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -1500,8 +1624,8 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_portalVein" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_portalVein" units="kPa_s_per_L"/>
+        <variable cmeta:id="portal-vein.blood.flow" name="v_B_portalVein" units="L_per_s"/>
+        <variable initial_value="100" name="R_B_portalVein" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -1518,8 +1642,9 @@
             </apply>
         </math>
         <!-- Liver-->
-        <variable initial_value="0.3" name="q_B_liver" units="litre"/>
-        <variable name="u_B_liver" units="kPa"/>
+        <variable cmeta:id="liver.blood.volume" initial_value="0.2" name="q_B_liver" units="litre"/>
+        <variable initial_value="0.06" name="q_B_liver_us" units="litre"/>
+        <variable cmeta:id="liver.blood.pressure" name="u_B_liver" units="kPa"/>
         <variable initial_value="10" name="E_B_liver" units="kPa_per_L"/>
         <variable initial_value="-0.50" name="z_liver" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1550,7 +1675,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_liver</ci>
-                        <ci>q_B_liver</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_liver</ci>
+                            <ci>q_B_liver_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -1565,10 +1694,10 @@
                 </apply>
             </apply>
         </math>
-        <variable name="v_B_liver1" units="L_per_s"/>
-        <variable name="v_B_liver2" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_liver1" units="kPa_s_per_L"/>
-        <variable initial_value="2000" name="R_B_liver2" units="kPa_s_per_L"/>
+        <variable cmeta:id="liver1.blood.flow" name="v_B_liver1" units="L_per_s"/>
+        <variable cmeta:id="liver2.blood.flow" name="v_B_liver2" units="L_per_s"/>
+        <variable initial_value="800" name="R_B_liver1" units="kPa_s_per_L"/>
+        <variable initial_value="1" name="R_B_liver2" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -1602,14 +1731,18 @@
         <variable initial_value="0.1" name="q_B_rGlomerulus" units="litre"/>
         <variable initial_value="0.1" name="q_B_lPeritubular" units="litre"/>
         <variable initial_value="0.1" name="q_B_rPeritubular" units="litre"/>
+        <variable initial_value="0.06" name="q_B_lGlomerulus_us" units="litre"/>
+        <variable initial_value="0.06" name="q_B_rGlomerulus_us" units="litre"/>
+        <variable initial_value="0.06" name="q_B_lPeritubular_us" units="litre"/>
+        <variable initial_value="0.06" name="q_B_rPeritubular_us" units="litre"/>
         <variable name="u_B_lGlomerulus" units="kPa"/>
         <variable name="u_B_rGlomerulus" units="kPa"/>
         <variable name="u_B_lPeritubular" units="kPa"/>
         <variable name="u_B_rPeritubular" units="kPa"/>
-        <variable initial_value="20" name="E_B_lGlomerulus" units="kPa_per_L"/>
-        <variable initial_value="20" name="E_B_rGlomerulus" units="kPa_per_L"/>
-        <variable initial_value="20" name="E_B_lPeritubular" units="kPa_per_L"/>
-        <variable initial_value="20" name="E_B_rPeritubular" units="kPa_per_L"/>
+        <variable initial_value="150" name="E_B_lGlomerulus" units="kPa_per_L"/>
+        <variable initial_value="150" name="E_B_rGlomerulus" units="kPa_per_L"/>
+        <variable initial_value="50" name="E_B_lPeritubular" units="kPa_per_L"/>
+        <variable initial_value="50" name="E_B_rPeritubular" units="kPa_per_L"/>
         <variable initial_value="-0.25" name="z_kidney" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1680,7 +1813,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_lGlomerulus</ci>
-                        <ci>q_B_lGlomerulus</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_lGlomerulus</ci>
+                            <ci>q_B_lGlomerulus_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -1702,7 +1839,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_rGlomerulus</ci>
-                        <ci>q_B_rGlomerulus</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_rGlomerulus</ci>
+                            <ci>q_B_rGlomerulus_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -1724,7 +1865,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_lPeritubular</ci>
-                        <ci>q_B_lPeritubular</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_lPeritubular</ci>
+                            <ci>q_B_lPeritubular_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -1746,7 +1891,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_rPeritubular</ci>
-                        <ci>q_B_rPeritubular</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_rPeritubular</ci>
+                            <ci>q_B_rPeritubular_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -1767,12 +1916,12 @@
         <variable name="v_B_rRenal2" units="L_per_s"/>
         <variable name="v_B_lRenal3" units="L_per_s"/>
         <variable name="v_B_rRenal3" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_lRenal1" units="kPa_s_per_L"/>
-        <variable initial_value="6000" name="R_B_rRenal1" units="kPa_s_per_L"/>
-        <variable initial_value="1000" name="R_B_lRenal2" units="kPa_s_per_L"/>
-        <variable initial_value="1000" name="R_B_rRenal2" units="kPa_s_per_L"/>
-        <variable initial_value="1000" name="R_B_lRenal3" units="kPa_s_per_L"/>
-        <variable initial_value="1000" name="R_B_rRenal3" units="kPa_s_per_L"/>
+        <variable initial_value="100" name="R_B_lRenal1" units="kPa_s_per_L"/>
+        <variable initial_value="100" name="R_B_rRenal1" units="kPa_s_per_L"/>
+        <variable initial_value="2000" name="R_B_lRenal2" units="kPa_s_per_L"/>
+        <variable initial_value="2000" name="R_B_rRenal2" units="kPa_s_per_L"/>
+        <variable initial_value="1" name="R_B_lRenal3" units="kPa_s_per_L"/>
+        <variable initial_value="1" name="R_B_rRenal3" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -1854,12 +2003,14 @@
             </apply>
         </math>
         <!-- Muscle in torso-->
-        <variable initial_value="0.5" name="q_B_musTorso" units="litre"/>
-        <variable initial_value="0.5" name="q_B_musTorsoVein" units="litre"/>
+        <variable initial_value="0.2" name="q_B_musTorso" units="litre"/>
+        <variable initial_value="0.2" name="q_B_musTorsoVein" units="litre"/>
+        <variable initial_value="0.12" name="q_B_musTorso_us" units="litre"/>
+        <variable initial_value="0.12" name="q_B_musTorsoVein_us" units="litre"/>
         <variable name="u_B_musTorso" units="kPa"/>
         <variable name="u_B_musTorsoVein" units="kPa"/>
-        <variable initial_value="20" name="E_B_musTorso" units="kPa_per_L"/>
-        <variable initial_value="20" name="E_B_musTorsoVein" units="kPa_per_L"/>
+        <variable initial_value="60" name="E_B_musTorso" units="kPa_per_L"/>
+        <variable initial_value="10" name="E_B_musTorsoVein" units="kPa_per_L"/>
         <variable initial_value="-0.50" name="z_musTorso" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -1885,7 +2036,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_musTorso</ci>
-                        <ci>q_B_musTorso</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_musTorso</ci>
+                            <ci>q_B_musTorso_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -1922,7 +2077,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_musTorsoVein</ci>
-                        <ci>q_B_musTorsoVein</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_musTorsoVein</ci>
+                            <ci>q_B_musTorsoVein_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -1940,9 +2099,9 @@
         <variable name="v_B_musTorso1" units="L_per_s"/>
         <variable name="v_B_musTorso2" units="L_per_s"/>
         <variable name="v_B_musTorso3" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_musTorso1" units="kPa_s_per_L"/>
+        <variable initial_value="100" name="R_B_musTorso1" units="kPa_s_per_L"/>
         <variable initial_value="1000" name="R_B_musTorso2" units="kPa_s_per_L"/>
-        <variable initial_value="1000" name="R_B_musTorso3" units="kPa_s_per_L"/>
+        <variable initial_value="1" name="R_B_musTorso3" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -1985,12 +2144,14 @@
             </apply>
         </math>
         <!-- Left arm-->
-        <variable initial_value="0.5" name="q_B_lArm" units="litre"/>
-        <variable initial_value="0.5" name="q_B_lArmVein" units="litre"/>
+        <variable initial_value="0.1" name="q_B_lArm" units="litre"/>
+        <variable initial_value="0.1" name="q_B_lArmVein" units="litre"/>
+        <variable initial_value="0.06" name="q_B_lArm_us" units="litre"/>
+        <variable initial_value="0.06" name="q_B_lArmVein_us" units="litre"/>
         <variable name="u_B_lArm" units="kPa"/>
         <variable name="u_B_lArmVein" units="kPa"/>
-        <variable initial_value="20" name="E_B_lArm" units="kPa_per_L"/>
-        <variable initial_value="20" name="E_B_lArmVein" units="kPa_per_L"/>
+        <variable initial_value="150" name="E_B_lArm" units="kPa_per_L"/>
+        <variable initial_value="60" name="E_B_lArmVein" units="kPa_per_L"/>
         <variable initial_value="-0.50" name="z_lArm" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -2016,7 +2177,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_lArm</ci>
-                        <ci>q_B_lArm</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_lArm</ci>
+                            <ci>q_B_lArm_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -2053,7 +2218,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_lArmVein</ci>
-                        <ci>q_B_lArmVein</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_lArmVein</ci>
+                            <ci>q_B_lArmVein_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -2071,9 +2240,9 @@
         <variable name="v_B_lArm1" units="L_per_s"/>
         <variable name="v_B_lArm2" units="L_per_s"/>
         <variable name="v_B_lArm3" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_lArm1" units="kPa_s_per_L"/>
-        <variable initial_value="1000" name="R_B_lArm2" units="kPa_s_per_L"/>
-        <variable initial_value="1000" name="R_B_lArm3" units="kPa_s_per_L"/>
+        <variable initial_value="100" name="R_B_lArm1" units="kPa_s_per_L"/>
+        <variable initial_value="6000" name="R_B_lArm2" units="kPa_s_per_L"/>
+        <variable initial_value="1" name="R_B_lArm3" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -2116,12 +2285,14 @@
             </apply>
         </math>
         <!-- Right arm-->
-        <variable initial_value="0.5" name="q_B_rArm" units="litre"/>
-        <variable initial_value="0.5" name="q_B_rArmVein" units="litre"/>
+        <variable initial_value="0.1" name="q_B_rArm" units="litre"/>
+        <variable initial_value="0.1" name="q_B_rArmVein" units="litre"/>
+        <variable initial_value="0.06" name="q_B_rArm_us" units="litre"/>
+        <variable initial_value="0.06" name="q_B_rArmVein_us" units="litre"/>
         <variable name="u_B_rArm" units="kPa"/>
         <variable name="u_B_rArmVein" units="kPa"/>
-        <variable initial_value="20" name="E_B_rArm" units="kPa_per_L"/>
-        <variable initial_value="20" name="E_B_rArmVein" units="kPa_per_L"/>
+        <variable initial_value="150" name="E_B_rArm" units="kPa_per_L"/>
+        <variable initial_value="60" name="E_B_rArmVein" units="kPa_per_L"/>
         <variable initial_value="-0.50" name="z_rArm" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -2147,7 +2318,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_rArm</ci>
-                        <ci>q_B_rArm</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_rArm</ci>
+                            <ci>q_B_rArm_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -2184,7 +2359,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_rArmVein</ci>
-                        <ci>q_B_rArmVein</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_rArmVein</ci>
+                            <ci>q_B_rArm_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -2202,9 +2381,9 @@
         <variable name="v_B_rArm1" units="L_per_s"/>
         <variable name="v_B_rArm2" units="L_per_s"/>
         <variable name="v_B_rArm3" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_rArm1" units="kPa_s_per_L"/>
-        <variable initial_value="1000" name="R_B_rArm2" units="kPa_s_per_L"/>
-        <variable initial_value="1000" name="R_B_rArm3" units="kPa_s_per_L"/>
+        <variable initial_value="100" name="R_B_rArm1" units="kPa_s_per_L"/>
+        <variable initial_value="6000" name="R_B_rArm2" units="kPa_s_per_L"/>
+        <variable initial_value="1" name="R_B_rArm3" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -2247,12 +2426,14 @@
             </apply>
         </math>
         <!-- Left leg-->
-        <variable initial_value="0.5" name="q_B_lLeg" units="litre"/>
-        <variable initial_value="0.5" name="q_B_lLegVein" units="litre"/>
+        <variable initial_value="0.1" name="q_B_lLeg" units="litre"/>
+        <variable initial_value="0.1" name="q_B_lLegVein" units="litre"/>
+        <variable initial_value="0.06" name="q_B_lLeg_us" units="litre"/>
+        <variable initial_value="0.06" name="q_B_lLegVein_us" units="litre"/>
         <variable name="u_B_lLeg" units="kPa"/>
         <variable name="u_B_lLegVein" units="kPa"/>
-        <variable initial_value="20" name="E_B_lLeg" units="kPa_per_L"/>
-        <variable initial_value="20" name="E_B_lLegVein" units="kPa_per_L"/>
+        <variable initial_value="150" name="E_B_lLeg" units="kPa_per_L"/>
+        <variable initial_value="60" name="E_B_lLegVein" units="kPa_per_L"/>
         <variable initial_value="-0.50" name="z_lLeg" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -2278,7 +2459,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_lLeg</ci>
-                        <ci>q_B_lLeg</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_lLeg</ci>
+                            <ci>q_B_lLeg_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -2315,7 +2500,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_lLegVein</ci>
-                        <ci>q_B_lLegVein</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_lLegVein</ci>
+                            <ci>q_B_lLeg_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -2333,9 +2522,9 @@
         <variable name="v_B_lLeg1" units="L_per_s"/>
         <variable name="v_B_lLeg2" units="L_per_s"/>
         <variable name="v_B_lLeg3" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_lLeg1" units="kPa_s_per_L"/>
-        <variable initial_value="1000" name="R_B_lLeg2" units="kPa_s_per_L"/>
-        <variable initial_value="1000" name="R_B_lLeg3" units="kPa_s_per_L"/>
+        <variable initial_value="100" name="R_B_lLeg1" units="kPa_s_per_L"/>
+        <variable initial_value="4000" name="R_B_lLeg2" units="kPa_s_per_L"/>
+        <variable initial_value="1" name="R_B_lLeg3" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>
@@ -2378,12 +2567,14 @@
             </apply>
         </math>
         <!-- Right leg-->
-        <variable initial_value="0.5" name="q_B_rLeg" units="litre"/>
-        <variable initial_value="0.5" name="q_B_rLegVein" units="litre"/>
+        <variable initial_value="0.1" name="q_B_rLeg" units="litre"/>
+        <variable initial_value="0.1" name="q_B_rLegVein" units="litre"/>
+        <variable initial_value="0.06" name="q_B_rLeg_us" units="litre"/>
+        <variable initial_value="0.06" name="q_B_rLegVein_us" units="litre"/>
         <variable name="u_B_rLeg" units="kPa"/>
         <variable name="u_B_rLegVein" units="kPa"/>
-        <variable initial_value="20" name="E_B_rLeg" units="kPa_per_L"/>
-        <variable initial_value="20" name="E_B_rLegVein" units="kPa_per_L"/>
+        <variable initial_value="150" name="E_B_rLeg" units="kPa_per_L"/>
+        <variable initial_value="60" name="E_B_rLegVein" units="kPa_per_L"/>
         <variable initial_value="-0.50" name="z_rLeg" units="meter"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
@@ -2409,7 +2600,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_rLeg</ci>
-                        <ci>q_B_rLeg</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_rLeg</ci>
+                            <ci>q_B_rLeg_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -2446,7 +2641,11 @@
                     <apply>
                         <times/>
                         <ci>E_B_rLegVein</ci>
-                        <ci>q_B_rLegVein</ci>
+                        <apply>
+                            <minus/>
+                            <ci>q_B_rLegVein</ci>
+                            <ci>q_B_rLeg_us</ci>
+                        </apply>
                     </apply>
                     <apply>
                         <times/>
@@ -2464,9 +2663,9 @@
         <variable name="v_B_rLeg1" units="L_per_s"/>
         <variable name="v_B_rLeg2" units="L_per_s"/>
         <variable name="v_B_rLeg3" units="L_per_s"/>
-        <variable initial_value="6000" name="R_B_rLeg1" units="kPa_s_per_L"/>
-        <variable initial_value="1000" name="R_B_rLeg2" units="kPa_s_per_L"/>
-        <variable initial_value="1000" name="R_B_rLeg3" units="kPa_s_per_L"/>
+        <variable initial_value="100" name="R_B_rLeg1" units="kPa_s_per_L"/>
+        <variable initial_value="4000" name="R_B_rLeg2" units="kPa_s_per_L"/>
+        <variable initial_value="1" name="R_B_rLeg3" units="kPa_s_per_L"/>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>
                 <eq/>

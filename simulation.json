@@ -37,8 +37,8 @@
           "name": "main/u_B_RV"
         },
         {
-          "id": "v_B_AV",
-          "name": "main/v_B_AV"
+          "id": "u_B_AA",
+          "name": "main/u_B_AA"
         }
       ],
       "plots": [
@@ -57,8 +57,8 @@
         {
           "xAxisTitle": "t",
           "xValue": "t",
-          "yAxisTitle": "Aortic valve flow",
-          "yValue": "v_B_AV"
+          "yAxisTitle": "Aortic pressure",
+          "yValue": "u_B_AA"
         }
       ]
     },

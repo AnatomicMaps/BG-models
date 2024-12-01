@@ -1,23 +1,33 @@
 [
     {
         "id": "CardioVascularSystem/SHAPE_4",
-        "label": "$u_{liver}^{b}$"
+        "label": "$u_{liver}^{b}$",
+        "models": "cvs:pressure.liver",
+        "name": "Pressure of the blood in the liver compartment."
     },
     {
         "id": "CardioVascularSystem/SHAPE_8",
-        "label": "$v_{liver1}^{b}$"
+        "label": "$v_{liver1}^{b}$",
+        "models": "cvs:flow.celiac-liver",
+        "name": "Flow rate of the blood entering the liver via the celiac artery."
     },
     {
         "id": "CardioVascularSystem/SHAPE_12",
-        "label": "$v_{liver2}^{b}$"
+        "label": "$v_{liver2}^{b}$",
+        "models": "cvs:flow.hepatic-liver",
+        "name": "Flow rate of the blood leaving the liver via the hepatic vein."
     },
     {
         "id": "CardioVascularSystem/SHAPE_21",
-        "label": "$u_{intestine}^{b}$"
+        "label": "$u_{intestine}^{b}$",
+        "models": "cvs:pressure.intestine",
+        "name": "Pressure of the blood in the intestine compartment."
     },
     {
         "id": "CardioVascularSystem/SHAPE_31",
-        "label": "$u_{lGlomerulus}^{b}$"
+        "label": "$u_{lGlomerulus}^{b}$",
+        "models": "cvs:pressure.left-glomerulus",
+        "name": "Pressure of the blood in the left glomerulus compartment."
     },
     {
         "id": "CardioVascularSystem/SHAPE_35",
@@ -29,7 +39,9 @@
     },
     {
         "id": "CardioVascularSystem/SHAPE_45",
-        "label": "$u_{lPeritubular}^{b}$"
+        "label": "$u_{lPeritubular}^{b}$",
+        "models": "cvs:pressure.left-peritubular",
+        "name": "Pressure of the blood in the left peritubular compartment."
     },
     {
         "id": "CardioVascularSystem/SHAPE_49",
@@ -173,7 +185,9 @@
     },
     {
         "id": "CardioVascularSystem/SHAPE_211",
-        "label": "$v_{portalVein}^{b}$"
+        "label": "$v_{portalVein}^{b}$",
+        "models": "cvs:flow.portal-liver",
+        "name": "Flow rate of the blood entering the liver via the portal vein."
     },
     {
         "id": "CardioVascularSystem/SHAPE_218",
