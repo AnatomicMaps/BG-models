@@ -1,34 +1,88 @@
 {
-    "features": {
-        "CardioVascularSystem/SHAPE_4": {
-            "models": "cvs:pressure.liver",
-            "label": "Pressure of the blood in the liver compartment."
-        },
-
-        "CardioVascularSystem/SHAPE_8": {
-            "models": "cvs:flow.celiac-liver",
-            "label": "Flow rate of the blood entering the liver via the celiac artery."
-        },
-        "CardioVascularSystem/SHAPE_12": {
-            "models": "cvs:flow.hepatic-liver",
-            "label": "Flow rate of the blood leaving the liver via the hepatic vein."
-        },
-        "CardioVascularSystem/SHAPE_21": {
-            "models": "cvs:pressure.intestine",
-            "label": "Pressure of the blood in the intestine compartment."
-        },
-
-        "CardioVascularSystem/SHAPE_31": {
-            "models": "cvs:pressure.left-glomerulus",
-            "label": "Pressure of the blood in the left glomerulus compartment."
-        },
-        "CardioVascularSystem/SHAPE_45": {
-            "models": "cvs:pressure.left-peritubular",
-            "label": "Pressure of the blood in the left peritubular compartment."
-        },
-        "CardioVascularSystem/SHAPE_211": {
-            "models": "cvs:flow.portal-liver",
-            "label": "Flow rate of the blood entering the liver via the portal vein."
-        }
+  "features": {
+    "CardioVascularSystem/SHAPE_8": {
+      "models": "cvs:flow.celiac-liver",
+      "label": "Flow rate of the blood entering the liver via the celiac artery."
+    },
+    "CardioVascularSystem/SHAPE_12": {
+      "models": "cvs:flow.hepatic-liver",
+      "label": "Flow rate of the blood leaving the liver via the hepatic vein."
+    },
+    "CardioVascularSystem/SHAPE_21": {
+      "models": "cvs:pressure.intestine",
+      "label": "Pressure of the blood in the intestine compartment."
+    },
+    "CardioVascularSystem/SHAPE_31": {
+      "models": "cvs:pressure.left-glomerulus",
+      "label": "Pressure of the blood in the left glomerulus compartment."
+    },
+    "CardioVascularSystem/SHAPE_45": {
+      "models": "cvs:pressure.left-peritubular",
+      "label": "Pressure of the blood in the left peritubular compartment."
+    },
+    "CardioVascularSystem/SHAPE_211": {
+      "models": "cvs:flow.portal-liver",
+      "label": "Flow rate of the blood entering the liver via the portal vein."
+    },
+    "CardioVascularSystem/SHAPE_84": {
+      "models": "cvs:pressure.lv",
+      "label": "Pressure of the blood in the luminal space of the left ventricle of the heart"
+    },
+    "CardioVascularSystem/SHAPE_92": {
+      "models": "cvs:pressure.rv",
+      "label": "Pressure of the blood in the luminal space of the right ventricle of the heart"
+    },
+    "CardioVascularSystem/SHAPE_104": {
+      "models": "cvs:pressure.la",
+      "label": "Pressure of the blood in the luminal space of the left atrium of the heart"
+    },
+    "CardioVascularSystem/SHAPE_88": {
+      "models": "cvs:pressure.ra",
+      "label": "Pressure of the blood in the luminal space of the right atrium of the heart"
+    },
+    "CardioVascularSystem/SHAPE_116": {
+      "models": "cvs:pressure.pa",
+      "label": "Pressure of the blood in the pulmonary artery"
+    },
+    "CardioVascularSystem/SHAPE_108": {
+      "models": "cvs:pressure.lung",
+      "label": "Pressure of the blood in the lung vasculature"
+    },
+    "CardioVascularSystem/SHAPE_124": {
+      "models": "cvs:pressure.pulm-vein",
+      "label": "Pressure of the blood in the pulmonary vein"
+    },
+    "CardioVascularSystem/SHAPE_144": {
+      "models": "cvs:pressure.brain",
+      "label": "Pressure of the blood in the vasculature of brain"
+    },
+    "CardioVascularSystem/SHAPE_76": {
+      "models": "cvs:pressure.aa",
+      "label": "Pressure of the blood in the ascending aorta"
+    },
+    "CardioVascularSystem/SHAPE_183": {
+      "models": "cvs:pressure.celiac",
+      "label": "Pressure of the blood in the celiac artery"
+    },
+    "CardioVascularSystem/SHAPE_187": {
+      "models": "cvs:pressure.sup-mes",
+      "label": "Pressure of the blood in the superior mesenteric artery"
+    },
+    "CardioVascularSystem/SHAPE_171": {
+      "models": "cvs:pressure.stomach",
+      "label": "Pressure of the blood in the gastric vasculature"
+    },
+    "CardioVascularSystem/SHAPE_175": {
+      "models": "cvs:pressure.spleen",
+      "label": "Pressure of the blood in the vasculature of spleen"
+    },
+    "CardioVascularSystem/SHAPE_191": {
+      "models": "cvs:pressure.portal-vein",
+      "label": "Pressure of the blood in the portal vein"
+    },
+    "CardioVascularSystem/SHAPE_4": {
+      "models": "cvs:pressure.liver",
+      "label": "Pressure of the blood in the vasculature of liver"
     }
+  }
 }
