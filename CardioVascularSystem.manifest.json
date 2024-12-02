@@ -13,7 +13,7 @@
             "id": "respiration",
             "href": "Respiration.svg",
             "kind": "detail",
-            "feature": "CardioVascularSystem/$u_{lung}^{b}$",
+            "feature": "CardioVascularSystem/Lung_blood_pressure",
             "zoom": 8
         }
     ]

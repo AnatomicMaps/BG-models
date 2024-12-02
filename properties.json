@@ -46,7 +46,8 @@
     },
     "CardioVascularSystem/SHAPE_108": {
       "models": "cvs:pressure.lung",
-      "label": "Pressure of the blood in the lung vasculature"
+      "label": "Pressure of the blood in the lung vasculature",
+      "name": "Lung blood pressure"
     },
     "CardioVascularSystem/SHAPE_124": {
       "models": "cvs:pressure.pulm-vein",
