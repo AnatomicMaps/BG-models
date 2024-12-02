@@ -1,0 +1,14 @@
+[
+    {
+        "sckan_term": "cvs:pressure.liver",
+        "label": "Pressure of the blood in the liver compartment.",
+        "cellmls": [
+            {
+                "cellml": "https://models.physiomeproject.org/workspace/c3d/file/020a6cd32177ca36e26ea5047c6b303ba0fc787b/models/cvs-model.cellml",
+                "workspace": "https://models.physiomeproject.org/workspace/c3d",
+                "score": 0.8,
+                "exposure": "https://models.physiomeproject.org/e/c3e"
+            }
+        ]
+    }
+]
