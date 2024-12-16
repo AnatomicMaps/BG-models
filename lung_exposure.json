@@ -12,5 +12,17 @@
         "created": "2024-12-01 22:16:42+12:00",
         "simulation": "https://models.physiomeproject.org/e/c3e/models/cvs-model.cellml/download_omex",
         "flatmap": "BG:CardioVascular"
+    },
+    {
+        "exposure": "https://models.physiomeproject.org/e/c43",
+        "title": "VITAL 2.2 arterial wall growth knowledge page\n",
+        "sha": "be0e999a849003020e5a044c287af79c971d6448",
+        "workspace": "https://models.physiomeproject.org/workspace/c3f",
+        "documentation": "Landing page for arterial growth models in the cardiovascular system using pressure and volume relations.  This is somehow related to Pressure of the blood in the pulmonary artery.",
+        "omex": "https://models.physiomeproject.org/e/c43/download_generated_omex",
+        "authors": "Shelley Fong <s.fong@auckland.ac.nz>",
+        "description": "Landing page for arterial growth models in the cardiovascular system using pressure and volume relations.",
+        "created": "2024-12-02",
+        "image": "https://models.physiomeproject.org/workspace/cardiovascular_circulation_systemic/rawfile/1f1189e668a0126d105a20ef5db0ab506c9fa8fb/systemic.png"
     }
 ]
