@@ -84,6 +84,12 @@
     "CardioVascularSystem/SHAPE_4": {
       "models": "cvs:pressure.liver",
       "label": "Pressure of the blood in the vasculature of liver"
+    },
+    "respiration/SHAPE_9": {
+      "label": "Alveoli"
+    },
+    "respiration/SHAPE_10": {
+      "label": ""
     }
   }
 }
