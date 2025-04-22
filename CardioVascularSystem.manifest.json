@@ -12,9 +12,10 @@
         {
             "id": "respiration",
             "href": "Respiration.svg",
-            "kind": "detail",
             "feature": "CardioVascularSystem/Lung_blood_pressure",
-            "zoom": 8
+            "kind": "functional",
+            "detail-fit": "fit-width",
+            "zoom": 6
         }
     ]
 }
