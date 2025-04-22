@@ -1,5 +1,5 @@
 {
-    "id": "CardioVascularSystem",
+    "id": "BG:CardioVascular",
     "models": "BG:CardioVascular",
     "properties": "properties.json",
     "kind": "functional",
