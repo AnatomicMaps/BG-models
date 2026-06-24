@@ -3,7 +3,6 @@
   "models": "",
   "kind": "functional",
   "properties": "properties.json",
-  "sckan-version": "production",
   "sources": [
     {
       "id": "base-svg",
