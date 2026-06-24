@@ -1,0 +1,14 @@
+{
+  "id": "RCL_Circuit",
+  "models": "",
+  "kind": "functional",
+  "properties": "properties.json",
+  "sckan-version": "production",
+  "sources": [
+    {
+      "id": "base-svg",
+      "kind": "base",
+      "href": "RCL_Circuit.svg"
+    }
+  ]
+}

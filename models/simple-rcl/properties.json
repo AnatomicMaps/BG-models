@@ -1,0 +1,28 @@
+{
+  "features": {
+    "ID-00000001": {
+      "label": "Capacitor Potential",
+      "models": ""
+    },
+    "ID-00000002": {
+      "label": "Inductor Potential",
+      "models": ""
+    },
+    "ID-00000003": {
+      "label": "Reistance Flow",
+      "models": ""
+    },
+    "ID-00000004": {
+      "label": "Capacitance",
+      "models": ""
+    },
+    "ID-00000005": {
+      "label": "Resistance",
+      "models": ""
+    },
+    "ID-00000006": {
+      "label": "Capacitance",
+      "models": ""
+    }
+  }
+}
