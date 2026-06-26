@@ -1,0 +1,8 @@
+{
+  "title": "Simple RCL Circuit",
+  "description": "Example CellDL built RCL circuit bond graph.",
+  "keywords": [
+    "CellML",
+    "functional connectivity"
+  ]
+}

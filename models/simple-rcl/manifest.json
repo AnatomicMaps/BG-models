@@ -1,14 +1,17 @@
 {
-  "id": "RCL_Circuit",
-  "models": "",
-  "kind": "functional",
-  "properties": "properties.json",
-  "description": "description.json",
-  "sources": [
-    {
-      "id": "rcl",
-      "kind": "base",
-      "href": "RCL_Circuit.svg"
-    }
-  ]
+  "_comment": "This file was generated from Prepare Flatmap Source files application.",
+  "manifest": {
+    "id": "RCL_Circuit",
+    "models": "",
+    "kind": "functional",
+    "properties": "properties.json",
+    "description": "description.json",
+    "sources": [
+      {
+        "id": "rcl",
+        "kind": "base",
+        "href": "RCL_Circuit.svg"
+      }
+    ]
+  }
 }

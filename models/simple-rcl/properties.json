@@ -1,22 +1,28 @@
 {
   "features": {
     "rcl/ID-00000001": {
-      "label": "Capacitance Potential"
+      "label": "Capacitance Potential",
+      "models": ""
     },
     "rcl/ID-00000002": {
-      "label": "Inductor Potential"
+      "label": "Inductance Potential",
+      "models": ""
     },
     "rcl/ID-00000003": {
-      "label": "Resistance Flow"
+      "label": "Resistance Flow",
+      "models": ""
     },
     "rcl/ID-00000004": {
-      "label": "Capacitance"
+      "label": "Capacitance",
+      "models": ""
     },
     "rcl/ID-00000005": {
-      "label": "AAAA"
+      "label": "Resistance",
+      "models": ""
     },
     "rcl/ID-00000006": {
-      "label": "BBBB"
+      "label": "Inductance",
+      "models": ""
     }
   }
 }
