@@ -3,9 +3,10 @@
   "models": "",
   "kind": "functional",
   "properties": "properties.json",
+  "description": "description.json",
   "sources": [
     {
-      "id": "base-svg",
+      "id": "rcl",
       "kind": "base",
       "href": "RCL_Circuit.svg"
     }
