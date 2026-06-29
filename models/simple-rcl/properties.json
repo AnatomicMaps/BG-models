@@ -2,27 +2,33 @@
   "features": {
     "rcl/ID-00000001": {
       "label": "Capacitance Potential",
-      "models": ""
+      "models": "",
+      "variable": "main/u_e_C"
     },
     "rcl/ID-00000002": {
       "label": "Inductance Potential",
-      "models": ""
+      "models": "",
+      "variable": "main/u_e_L"
     },
     "rcl/ID-00000003": {
       "label": "Resistance Flow",
-      "models": ""
+      "models": "",
+      "variable": "main/v_e_R"
     },
     "rcl/ID-00000004": {
       "label": "Capacitance",
-      "models": ""
+      "models": "",
+      "variable": "main/C_q_e_C"
     },
     "rcl/ID-00000005": {
       "label": "Resistance",
-      "models": ""
+      "models": "",
+      "variable": "main/R_R_e_R"
     },
     "rcl/ID-00000006": {
       "label": "Inductance",
-      "models": ""
+      "models": "",
+      "variable": "main/L_L_e_L"
     }
   }
 }
