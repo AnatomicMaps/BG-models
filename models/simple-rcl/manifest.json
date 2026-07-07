@@ -1,6 +1,7 @@
 {
   "_comment": "This file was generated from the \"Prepare Flatmap Source Files\" application",
-  "models": "RCL Circuit",
+  "id": "RCL_Circuit",
+  "models": "",
   "kind": "functional",
   "properties": "properties.json",
   "description": "description.json",
