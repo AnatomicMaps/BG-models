@@ -21,7 +21,7 @@
       "variable": "main/C_q_e_C"
     },
     "rcl/ID-00000005": {
-      "label": "Resistance",
+      "label": "Resistancer",
       "models": "",
       "variable": "main/R_R_e_R"
     },
